@@ -1,0 +1,8 @@
+title: User guide
+nav:
+    - reading-data.md
+    - model-evaluation.md
+    - pipelines.md
+    - feature-extraction.md
+    - hyperparameter-tuning.md
+    - mini-batching.md
