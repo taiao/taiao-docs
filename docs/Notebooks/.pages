@@ -1,0 +1,9 @@
+nav:
+    - Critter Detector: critter_detector.md
+    - Himawari8 AWS data connector: Himawari8.md
+    - MetOcean Solutions API: metocean_obs_api_connector.md
+    - Moana 25 year hydrodynamic hindcast of NZ waters: Moana_thredds_server_connector.md
+    - NZ MetServices rain radar network: NZ_Radar_connector.md
+    - Taiao Case 4: TAIAO_UseCase_4.md
+    - Moana thredds server connector: Moana thredds server connector.md
+
