@@ -1,0 +1,311 @@
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this notebook I'm going to make an study about the increase of the temperature. Not the temperature itself.</p>
+<p>It will be divided into this sections:</p>
+<ul>
+<li>Introduction</li>
+</ul>
+<ul>
+<li>Linear Regression of the mean temperature per year</li>
+</ul>
+<p>With the temperature of every city, I'm going to calculate the slope of the mean temperature as a function of the years.
+So this information will tell us if one city is getting hotter more rapidly than others. We will know how many degrees increases the temperature in one year.</p>
+<ul>
+<li>Maximum value per country</li>
+</ul>
+<p>For each country, I'm going to calculate the city that is increasing it's temperature more qickly.
+It will be like the ranking of the worst cities in the world to live in the future (in terms of Global Warming).
+Of course, I don't pretend a massive migration. It's just a way to understand the data.</p>
+<ul>
+<li>Minimum value per country</li>
+</ul>
+<p>For each country, I'm going to calculate the city that is increasing it's temperature more slowly.
+It will be like the ranking of the best cities in the world to live in the future (in terms of Global Warming).
+Again, I don't pretend a massive migration. It's just a way to understand the data.</p>
+<ul>
+<li>Conclusions</li>
+</ul>
+<p>I will get some warning messages... please, be comprehensive. I'm just a beginner :)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h3><p>My work is going to be the visualization as a ranking of how is increasing the temperature in every country.</p>
+<p>I thought about plotting all the cities in the dataset, but it was too much to see it in only one plot. I also didn't want one plot for country, as there are many countries, and it will became an eternal notebook. 
+So I finaly decided to plot one city per country. 159 cities. I think it is enough to make an idea of the situation with one plot (finally I made two).</p>
+<p>The plot 0 that I did was the global temperature vs years. I'm not shearing it in this notebook. But if you see one from other notebook you will realize that from 1975, the temperature is increasing almost linearly. So I thought to calculate the slope of this straight line.</p>
+<p>I'm going to calculate the slope of the main temperature for each year and city from this moment, 1975, where the linear regression seems to be a good model to fit the data. I'm taking into account countries because colonialism made many cities to have the same name in different countries.</p>
+<p>Any way, I'm not plotting the current mean temperature of those cities, so the increase must be understud as a tendence, not a temperature itself.</p>
+<p>And I'm always suposing that the warming is goin to be the same as it is nowadays.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># linear algebra</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># data processing, CSV file I/O (e.g. pd.read_csv)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;mode.chained_assignment&#39;</span><span class="p">,</span><span class="s1">&#39;warn&#39;</span><span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">register_matplotlib_converters</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Input data files are available in the read-only &quot;../input/&quot; directory</span>
+<span class="c1"># For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">for</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;/kaggle/input&#39;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
+
+<span class="c1"># You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using &quot;Save &amp; Run All&quot; </span>
+<span class="c1"># You can also write temporary files to /kaggle/temp/, but they won&#39;t be saved outside of the current session</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Linear-Regression-of-the-mean-temperature-per-year">Linear Regression of the mean temperature per year<a class="anchor-link" href="#Linear-Regression-of-the-mean-temperature-per-year">&#182;</a></h3><p>I'm going to calculate the average temperature of every year for every city and calculate the linear regression for every city in the data set.
+I'm doing this from 1975 as it seams to be the beggining of the current Global Warming.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Change_By_City</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;/kaggle/input/climate-change-earth-surface-temperature-data/GlobalLandTemperaturesByCity.csv&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Change_By_City</span><span class="o">=</span><span class="n">Change_By_City</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">,</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AverageTemperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;Longitude&#39;</span><span class="p">])</span>
+<span class="n">Change_By_City</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">Change_By_City</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> 
+<span class="n">av_by_year</span><span class="o">=</span><span class="n">Change_By_City</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span><span class="s1">&#39;Longitude&#39;</span><span class="p">])[</span><span class="s1">&#39;AverageTemperature&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="n">Change_By_City</span><span class="p">[</span><span class="s2">&quot;Average_By_Year&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">av_by_year</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,]</span>
+<span class="n">Change_By_City</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span><span class="s1">&#39;City&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Change_By_City_By_Year</span><span class="o">=</span><span class="n">Change_By_City</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span><span class="s1">&#39;City&#39;</span><span class="p">])</span>
+<span class="n">mask</span><span class="o">=</span><span class="n">Change_By_City_By_Year</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="s1">&#39;1975&#39;</span>
+<span class="n">Last_Change_By_City_By_Year</span><span class="o">=</span><span class="n">Change_By_City_By_Year</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,:]</span>
+
+<span class="k">def</span> <span class="nf">my_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Given X and y, this function fits the Linear Regression model</span>
+<span class="sd">    and returns coef, intercept and score&#39;&#39;&#39;</span>
+    <span class="n">change_model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">change_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">score</span><span class="o">=</span><span class="n">change_model</span><span class="o">.</span><span class="n">score</span>
+    <span class="n">change_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="n">change_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span><span class="n">change_model</span><span class="o">.</span><span class="n">intercept_</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">score</span><span class="p">)</span>
+<span class="n">Countries</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">Last_Change_By_City_By_Year</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">])</span>
+<span class="n">Last_Change_By_City_By_Year</span><span class="o">=</span><span class="n">Last_Change_By_City_By_Year</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span><span class="s1">&#39;City&#39;</span><span class="p">],</span>  
+               <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> 
+<span class="n">slope</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">Country</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">City</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">Countries</span><span class="p">:</span>
+    <span class="n">mask_Country</span><span class="o">=</span><span class="n">Last_Change_By_City_By_Year</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">i</span>
+    <span class="n">My_Country</span><span class="o">=</span><span class="n">Last_Change_By_City_By_Year</span><span class="p">[</span><span class="n">mask_Country</span><span class="p">]</span>
+    <span class="n">Cities</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">My_Country</span><span class="p">[</span><span class="s1">&#39;City&#39;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">Cities</span><span class="p">:</span>
+        <span class="n">mask_City</span><span class="o">=</span><span class="n">My_Country</span><span class="p">[</span><span class="s1">&#39;City&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">j</span>
+        <span class="n">My_City</span><span class="o">=</span><span class="n">My_Country</span><span class="p">[</span><span class="n">mask_City</span><span class="p">]</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">My_City</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">My_City</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">score</span><span class="p">)</span><span class="o">=</span><span class="n">my_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">slope</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">City</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+        <span class="n">Country</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">Change_By_Country_City</span><span class="o">=</span><span class="n">Last_Change_By_City_By_Year</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span><span class="s1">&#39;City&#39;</span><span class="p">])</span>
+<span class="n">Change_By_Country_City</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> 
+<span class="n">slope_by_city</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Slope&#39;</span><span class="p">])</span>
+<span class="n">city_by_city</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">City</span><span class="p">)</span>
+<span class="n">country_by_city</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">Country</span><span class="p">)</span>
+<span class="n">slope_by_city</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Slope&#39;</span><span class="p">]</span>
+<span class="n">Change_By_Country_City</span><span class="p">[</span><span class="s2">&quot;Slope_by_city&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">slope_by_city</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Slope&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Change_By_Country_City</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To understand it, take the first row. Baflan in Afganistan.</p>
+<p>Its Average Temperature by Year is 10.2630 ºC.</p>
+<p>Its slope is 0.034176.</p>
+<p>So, for 2050 we can calculate how many years we want to predict in the future:</p>
+\begin{align}
+\displaystyle {y} &amp;= 2050 - 1975 &amp;= 75
+\end{align}<p>We have to calculate the temperature from 1975, to 75 years later.</p>
+\begin{align}
+\displaystyle T &amp;= 10.2630 + 75*0.034176 &amp;= 10.2630 + 2.5632 = 12,8262
+\end{align}<p>12.8262 will be the predicted temperature in 2050 in Baflan (Afganistan).</p>
+<p>This calculate, can be done easily with the method predict of LinearRegression. But I wanted just to show what it means.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Maximum-value-per-country">Maximum value per country<a class="anchor-link" href="#Maximum-value-per-country">&#182;</a></h3><p>Here, from the slope of each city, I'm going to calculate for each country, wich is the city that is warming more quickly (higher slope).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">biggest_increasing</span><span class="o">=</span><span class="n">Change_By_Country_City</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Country&#39;</span><span class="p">])[</span><span class="s1">&#39;Slope_by_city&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;max&#39;</span><span class="p">)</span>
+<span class="n">Change_By_Country_City</span><span class="p">[</span><span class="s2">&quot;biggest_increasing&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">biggest_increasing</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,]</span>
+<span class="n">mini_increasing</span><span class="o">=</span><span class="n">Change_By_Country_City</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Country&#39;</span><span class="p">])[</span><span class="s1">&#39;Slope_by_city&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
+<span class="n">Change_By_Country_City</span><span class="p">[</span><span class="s2">&quot;mini_increasing&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">mini_increasing</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,]</span>
+<span class="n">Change_By_City_By_Year</span><span class="o">=</span><span class="n">Change_By_City</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span><span class="s1">&#39;City&#39;</span><span class="p">])</span>
+<span class="n">Max_Change_By_Country</span><span class="o">=</span><span class="n">Change_By_Country_City</span><span class="p">[[</span><span class="s1">&#39;City&#39;</span><span class="p">,</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span><span class="s1">&#39;Slope_by_city&#39;</span><span class="p">,</span><span class="s1">&#39;biggest_increasing&#39;</span><span class="p">]]</span> \
+<span class="p">[</span><span class="n">Change_By_Country_City</span><span class="o">.</span><span class="n">Slope_by_city</span><span class="o">==</span><span class="n">Change_By_Country_City</span><span class="o">.</span><span class="n">biggest_increasing</span><span class="p">]</span> \
+    <span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">])</span> \
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Slope_by_city&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">city_country</span> <span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">new_list</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">new</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;City&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;(&#39;</span><span class="o">+</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+        <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">new_list</span><span class="p">)</span>
+
+<span class="n">new_list</span><span class="o">=</span><span class="n">city_country</span><span class="p">(</span><span class="n">Max_Change_By_Country</span><span class="p">)</span>
+<span class="n">Max_Change_By_Country</span><span class="p">[</span><span class="s2">&quot;CityCountry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_list</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_color_codes</span><span class="p">(</span><span class="s2">&quot;pastel&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;biggest_increasing&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;CityCountry&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Max_Change_By_Country</span><span class="p">,</span>
+            <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Reds_d&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.065</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Increment of Temperature per year&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So, we can see that the city in the world that is increasing it's temperature more rapidly is Belgorod in Russia. It's the city that increases it's temperature more rapidly in Russia, wich is the first of the ranking.</p>
+<p>The second one is Pavlohrad in Ukraine. But you have to understand that maybe, the second city that increases the temperature more rapidly in the world is again in Russia. Pavlohrad is the more rapid in Ukraine, so it puts Ukraine in the second place in this ranking.</p>
+<p>Finaly, Tarija in Bolivia is the city that is getting worm more rapidly in Bolivia, but its speed is the slowest in this ranking.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Minimum-value-per-country">Minimum value per country<a class="anchor-link" href="#Minimum-value-per-country">&#182;</a></h3><p>Here I'm going to do the same as before but for de minimum slope in each country.</p>
+<p>The only difference is that I'm going to order the slope ascendig in the plot.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Min_Change_By_Country</span><span class="o">=</span><span class="n">Change_By_Country_City</span><span class="p">[[</span><span class="s1">&#39;City&#39;</span><span class="p">,</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span><span class="s1">&#39;Slope_by_city&#39;</span><span class="p">,</span><span class="s1">&#39;mini_increasing&#39;</span><span class="p">]]</span> \
+<span class="p">[</span><span class="n">Change_By_Country_City</span><span class="o">.</span><span class="n">Slope_by_city</span><span class="o">==</span><span class="n">Change_By_Country_City</span><span class="o">.</span><span class="n">mini_increasing</span><span class="p">]</span> \
+    <span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">])</span> \
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Slope_by_city&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">new_list</span><span class="o">=</span><span class="n">city_country</span><span class="p">(</span><span class="n">Min_Change_By_Country</span><span class="p">)</span>
+<span class="n">Min_Change_By_Country</span><span class="p">[</span><span class="s2">&quot;CityCountry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_list</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_color_codes</span><span class="p">(</span><span class="s2">&quot;pastel&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;mini_increasing&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;CityCountry&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Min_Change_By_Country</span><span class="p">,</span>
+            <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Blues_d&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.065</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Increment of Temperature per year&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here we can see that the first city in this ranking, Oruro in Bolivia, is decreasing its temperature, as it's slope even is negative.</p>
+<p>The rest of the world is increasing it.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h3><p>As we have seen the worst warming in the world will be in Russia and the best in Bolivia.</p>
+<p>Attending to the plots, it seems that Bolivia wont suffer Global Warming as other countries.</p>
+<p>I would like to guess what factors make some cities to worm more rapidly to others. Maybe industry, altitude, to be next to an ocean or a sea... in theese datasets we don't have all this information. It would be great to complete it a little. But I think it was not the purpose of theese datasets. It just wanted to evidence that The Earth is getting warm. And my purspose was to know how quickly it was happening.</p>
+<p>So now you know where the temperature will change more and less in the next years. Think about it.</p>
+<p>And thanks for reading until here :)</p>
+
+</div>
+</div>
+</div>
+ 
+
