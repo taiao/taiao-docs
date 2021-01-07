@@ -1,6 +1,12 @@
 <!-- Custom HTML site displayed as the landing page -->
 {% extends "base.html" %}
 
+{% block announce %}
+<a>
+  🎉&nbsp;&nbsp;Announcing <strong>River</strong> — Machine learning for data streams in Python&nbsp;&nbsp;🚀
+</a>
+{% endblock %}
+
 <!-- Render hero under tabs -->
 {% block tabs %}
     {{ super() }}
@@ -13,7 +19,7 @@
         /*Landing page container*/
         .tx-container {
             padding-top: .0rem;
-            /* background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1123 258'><path d='M1124,2c0,0 0,256 0,256l-1125,0l0,-48c0,0 16,5 55,5c116,0 197,-92 325,-92c121,0 114,46 254,46c140,0 214,-167 572,-166Z' style='fill: hsla(0, 0%, 100%, 1)' /></svg>") no-repeat bottom, */
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1123 258'><path d='M1124,2c0,0 0,256 0,256l-1125,0l0,-48c0,0 16,5 55,5c116,0 197,-92 325,-92c121,0 114,46 254,46c140,0 214,-167 572,-166Z' style='fill: hsla(0, 0%, 100%, 1)' /></svg>") no-repeat bottom,
             linear-gradient(
                     to bottom,
                     var(--md-primary-fg-color),
@@ -30,21 +36,20 @@
 
         .tx-hero h1 {
             margin-bottom: 1rem;
-            color: Black;
+            color: currentColor;
             font-weight: 600;
             font-size: 64px;
             font-family: 'Gilroy-Regular', sans-serif;
         }
 
         .tx-hero__content {
-            color: Black;
             padding-bottom: 1rem;
             margin: 0 auto;
             font-family: 'Lato', sans-serif;
         }
 
         .tx-hero__image{
-            width:90%;
+            width:70%;
             order:1;
         }
 
@@ -302,24 +307,23 @@
     <section class="tx-container">
         <div class="md-grid md-typeset">
           <div class="tx-hero">
+
             <!-- Hero content -->
             <div class="tx-hero__content">
-                <!-- Hero image -->
-                <div class="tx-hero__image">
-                    <img
-                    src="img/6825 TAIAO logo_1000x320.jpg"
-                    alt=""
-                    width="1000"
-                    height="320"
-                    draggable="false"
-                    >
-                </div>
+              <h1> River </h1>
+              <p>A Python package for online/streaming machine learning.</p>
+              <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-button md-button--primary">
+                Get started
+              </a>
+              <a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}" class="md-button">
+                GitHub Repo
+              </a>
             </div>
 
             <!-- Hero image -->
             <div class="tx-hero__image">
               <img
-                src="img/mountain-nature.jpg"
+                src="img/illustration.png"
                 alt=""
                 width="1459"
                 height="1200"
@@ -334,27 +338,28 @@
     <div class="top-hr">
         <div class="feature-item feature-item-underline">
             <h2>
-                What is Taiao
+                Incremental
             </h2>
-            <p>The TAIAO project will advance the state-of-the-art in environmental data science by developing new machine learning methods for time series and data streams.</p>
+            <p>All the tools in the library can be updated with a single observation at a time, and can therefore be used to process streaming data.</p>
         </div>
         <div class="feature-item feature-item-underline">
             <h2>
-                Our Goals
+                Adaptive
             </h2>
-            <p>Environmental data presents many challenges that require new data science methods. This programme will develop those new methods and build the required capability.</p>
+            <p>In the streaming setting, data can evolve. Adaptive methods are specifically designed to be robust against concept drift in dynamic environments.</p>
         </div>
         <div class="feature-item feature-item-underline">
             <h2>
-                Datasets & Notebooks
+                General purpose
             </h2>
-            <p>Environmental Datasets together with Jupyter Notebooks for data exploration.</p>
+            <p>River caters for different ml problems, including regression, classification, and unsupervised learning. It can also be used for adhoc tasks, such as computing online metrics, and concept drift detection. </p>
         </div>
         <div class="feature-item feature-item-underline">
             <h2>
-                Discussions
+                Efficient & easy to use
             </h2>
-            <p>Platform for discussion of topics related to Environmental Science.</div>
+            <p>Streaming techniques efficiently handle resources such as memory and processing time given the unbounded nature of data streams. River is designed for users with any experience level.</p>
+        </div>
     </div>
 
     <div class="top-hr">

@@ -1,8 +1,0 @@
-nav:
-    - Home: index.md
-    - getting-started
-    - user-guide
-    - api
-    - examples
-    - FAQ: faq
-    - releases
