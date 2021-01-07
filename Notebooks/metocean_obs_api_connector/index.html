@@ -140,13 +140,13 @@
     
       <div class="md-header-nav__source">
         
-<a href="https://taiao.github.io/taiao/" title="Go to repository" class="md-source">
+<a href="https://jacobmontiel.github.io/taiao-docs" title="Go to repository" class="md-source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    taiao.github.io/taiao
+    jacobmontiel/taiao-docs
   </div>
 </a>
       </div>
@@ -256,13 +256,13 @@
   
     <div class="md-nav__source">
       
-<a href="https://taiao.github.io/taiao/" title="Go to repository" class="md-source">
+<a href="https://jacobmontiel.github.io/taiao-docs" title="Go to repository" class="md-source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    taiao.github.io/taiao
+    jacobmontiel/taiao-docs
   </div>
 </a>
     </div>
@@ -853,13 +853,13 @@
                 
                 
                 <h1 id="metocean-solutions-observation-api-connector">MetOcean Solutions Observation API connector<a class="headerlink" href="#metocean-solutions-observation-api-connector" title="Permanent link">&para;</a></h1>
-<p>Author: Sebastien Delaux</p>
+<p><strong>Author:</strong> Sebastien Delaux</p>
 <p>This notebook describes how to get observation data from one of MetOcean Solutions' observation API.</p>
 <p>The data that can be accessed though the API come from different sources such as MetService's automatic weather station network, a number of wave buoys and tidal gages owned by various organisations. Different instances of the API are used for different sources. This connector should work for all of them.</p>
 <p>The API provides the data as sets of records that belong to a station.
 Each station is identified by a unique id string. Each station has its own metadata describing location, instrument, ownership, status, license and level of permission. If the station is not open then anyone interested to use the data needs to get in contact with MetOcean to negotiate access to the data. Any access to data non data will be done using the same connector but authentication will need to be set when initialising the connector.</p>
 <p>For now the connector allows to retrieve data in the shape of xarray datasets.</p>
-<p>A complete documentation of the API can be found here: https://observations-open.metoceanapi.com/api/swagger/</p>
+<p>A complete documentation of the API can be found here: <a href="https://observations-open.metoceanapi.com/api/swagger/">https://observations-open.metoceanapi.com/api/swagger/</a></p>
 <h2 id="installation-of-required-libraries">Installation of required libraries<a class="headerlink" href="#installation-of-required-libraries" title="Permanent link">&para;</a></h2>
 <p>Install and import xarray and matplotlib in the current Jupyter kernel.
 Xarray is a great library to work with data stored using NetCDF format. MetOcean's Observation API can provide data under the form of netCDF-like JSON and hence xarray is a great option to work with that data.
