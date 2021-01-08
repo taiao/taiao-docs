@@ -14,7 +14,7 @@ If you use this data set, please cite the associated manuscript:
 
 This data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/)
 
-For questions about this data set, contact vykanton@gmail.com.
+For questions about this data set, contact <vykanton@gmail.com>.
 
 
 ### Data format
@@ -26,10 +26,13 @@ Annotations are provided in .csv format as well as in [COCO Camera Traps](https:
 
 A link to a zipfile is provided below, but – whether you want the whole data set, a specific folder, or a subset of the data (e.g. images for one species) – we recommend checking out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).
 
-#### Download links:
+#### Download links
 
 &nbsp;&nbsp;&nbsp;&nbsp;[Images](https://lilablobssc.blob.core.windows.net/wellingtoncameratraps/wct_images.zip) (176GB)  
 &nbsp;&nbsp;&nbsp;&nbsp;[Metadata (.json)](https://lilablobssc.blob.core.windows.net/wellingtoncameratraps/wellington_camera_traps.json.zip) (9MB)  
 &nbsp;&nbsp;&nbsp;&nbsp;[Metadata (.csv)](https://lilablobssc.blob.core.windows.net/wellingtoncameratraps/wellington_camera_traps.csv.zip) (4MB)  
 
 Having trouble downloading? Check out our FAQ.
+
+#### Google drive data
+[Karioi Video feed](https://drive.google.com/drive/folders/0AFGE6x6goEzBUk9PVA) data.
