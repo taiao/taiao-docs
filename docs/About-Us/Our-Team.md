@@ -31,4 +31,6 @@
 
 ### PhD Students
 Olivier Graffeuille, School of Computer Science, [The University of Auckland](https://www.auckland.ac.nz/en.html)  
-Matthew Skiffington, Department of Computer Science, University of Waikato
+Ding Ning, School of Mathematics and Statistics, [The University of Canterbury](https://www.canterbury.ac.nz/)  
+Matthew Skiffington, Department of Computer Science, University of Waikato  
+Yibin Sun, School, Computing & Mathematical Sciences, University of Waikato
