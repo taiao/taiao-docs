@@ -1,0 +1,64 @@
+# Project information
+site_name: Taiao
+site_description: Artificial Intelligence for Advanced Open Environmental Science
+site_author: The taiao developers
+site_url: https://taiaoml.xyz
+
+# Repository
+repo_name: jacobmontiel/taiao-docs
+repo_url: https://jacobmontiel.github.io/taiao-docs
+
+# Copyright
+copyright: Copyright &copy; 2019 - 2020
+
+# Configuration
+theme:
+    name: material
+    custom_dir: docs/overrides
+    language: en
+    palette:
+        primary: indigo
+        accent: indigo
+    font:
+        text: Roboto
+        code: Roboto Mono
+    logo: img/Untitled.png
+    favicon: img/favicon.png
+    features:
+        - navigation.tabs
+        - navigation.instant
+
+# Extras
+extra:
+    social:
+      - icon: fontawesome/brands/github-alt
+        link: https://github.com/abifet/taiao-docs
+
+# Google Analytics
+# google_analytics:
+#   - UA-63302552-3
+#   - auto
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+        guess_lang: false
+  - footnotes
+  - toc:
+        permalink: true
+        toc_depth: "1-3"
+  - pymdownx.details
+  - pymdownx.arithmatex
+
+plugins:
+  - search
+  - awesome-pages
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
+
+  - js/version-select.js
+extra_css:
+  - stylesheets/extra.css
+  - css/version-select.css

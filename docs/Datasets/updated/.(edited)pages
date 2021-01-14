@@ -1,0 +1,29 @@
+nav:
+    - Climate Change - Earth Surface Temperature Data: climate_change.md
+    - U.S. Pollution Data: us_pollution.md
+    - Air Pollution in Seoul: air_pollution_seoul.md
+    - Air Quality in Madrid (2001-2018): air_quality_madrid_2001_2018.md
+    - Historical weather in the Netherlands 1901-2018: weather_netherlands_1901_2018.md
+    - Crop Residue Cover Measurement: crop_residue_cover_measurement.md
+    - Crop varietal identification with SCIO: crop_varietal_identification_with_scio.md
+
+    - Regional Council Water quality and Discharge data: Regional_Council_Water_quality_and_Discharge_data
+    - Google Earth Engine global geospatial data sets: Google_Earth_Engine_global_geospatial_data_sets
+    - Landsat 8 remote sensing data: Landsat_8_remote_sensing_data
+    - Global topography (elevation, slope, and aspect): Global_topography_(elevation,_slope,_and_aspect)
+    - NZ rain radar archive - RAW data: NZ_rain_radar_archive_-_RAW_data
+    - Himawari-8_2km_half_disc_archive:
+    - Himawari-8_500m_channel_3_half_disc_archive:
+    - Himawari-8_AWS_NOAA_archive:
+    - GPATS_Oceania_lightning_feed:
+    - TOA_lightning_feed:
+    - Blitzen_lightning_feed:
+    - Tropical_cyclone_archive:
+    - Images_of_wildlife_from_cameras:
+    - LILA_Wellington_Camera_Trap:
+    - Sentinel_1/2_snapshot_of_waikato_region:
+    - Auckland-Hamilton_Corridor_Aerial_Photography:
+    - Coromandel_river_+_rain_gauge_time_series:
+    - Horizons_Air_Quality:
+    - Hawke's_Bay_Air_Quality:
+    - Hawke's_Bay_Air_Quality_-_Raw:
