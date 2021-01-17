@@ -4,5 +4,5 @@ nav:
     - MetOcean Solutions API: metocean-obs-api-connector.md
     - Moana 25 year hydrodynamic hindcast of NZ waters: Moana-thredds-server-connector.md
     - NZ MetServices rain radar network: NZ-Radar-connector.md
-    - Taiao Case 4: TAIAO-UseCase_4.md
+    - Taiao Case 4: TAIAO-UseCase-4.md
     - Moana thredds server connector: Moana-thredds-server-connector.md

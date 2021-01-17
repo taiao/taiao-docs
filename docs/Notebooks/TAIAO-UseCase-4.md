@@ -136,7 +136,7 @@ testPredict = model.predict(testGen)
 ```
 
     172522/172522 [==============================] - 469s 3ms/step - loss: 9.9911e-04
-
+    
 
 and plot the output for the flood event of interest
 
@@ -149,7 +149,9 @@ pyplot.show(block=False)
 ```
 
 
-![png](TAIAO_UseCase_4_files/TAIAO_UseCase_4_12_0.png)
+    
+![png](TAIAO-UseCase-4_files/TAIAO-UseCase-4_12_0.png)
+    
 
 
 We do a dump of the csv file comparing the predicted river level to the actual river level
