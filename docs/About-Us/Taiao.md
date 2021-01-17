@@ -9,7 +9,9 @@ Our vision is to enable the next level of data science to provide robust and fit
 
 # Our Logo
 
-<img src='../img/6825 TAIAO logo_1000x320.jpg' style='width: 50%; height: 50%' align='right'/>
+<!-- src url is altered for a deployed site -->
+<img align="right" width="50%" height="50%" src="/img/6825_TAIAO_logo_1000x320.jpg">
+
 The TAIAO logo represents realms of water, land and sky. The rau (leaf) is used to represent aspects of growth and to indicate changes over time. The purapura whetū tukutuku pattern is used to represent the myriad of stars that are forever guiding and shaping our environments and the myriad of data points that TAIAO would like to observe and develop guidance from.
 <br>
 <br>
@@ -29,13 +31,5 @@ We will advance the state-of-the-art of data science by addressing the following
 
 **3. Deep Learning.** Deep Learning is being used increasingly in environmental data science. Neural networks can be very powerful methods for classifying images, but they have the drawback of a high energy consumption. We will focus on two particular problems in deep learning research that are particularly relevant to environmental data science: explainability of deep learning and accurate quantification of predictive uncertainty in deep learning.
 
-## Research Leaders – University of Waikato
-[Prof. Albert Bifet](https://www.waikato.ac.nz/staff-profiles/people/abifet), Project Leader, Department of Computer Science, University of Waikato  
-[Prof. Karin Bryan](https://sci.waikato.ac.nz/about-us/people/kbryan), Director [Environmental Research Institute](https://www.waikato.ac.nz/eri/), University of Waikato  
-[Prof. Bernhard Pfahringer](https://www.waikato.ac.nz/staff-profiles/people/bernhard/), Department of Computer Science, University of Waikato  
-[Prof. Eibe Frank](https://www.waikato.ac.nz/staff-profiles/people/eibe/), Department of Computer Science, University of Waikato
 
 General Enquiries: <d.ramirez@waikato.ac.nz>
-
-Website : [https://taiao.github.io/taiao/](https://taiao.github.io/taiao/)
-
