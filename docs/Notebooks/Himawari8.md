@@ -1,26 +1,6 @@
 # Himawari-8 data connector
 
-
- <!-- --> | <!-- --> 
- --- | --- |
- `git status` | List all *new or modified* files 
- `git diff` | Show file differences that **haven't been** staged 
-
-
-<button class="btn" style='cursor:pointer'><i class="fa fa-home"></i>View source on Github</button>
-
-| <!-- --> | <!-- --> |
-| -- | -- |
-| <img src='../img/colab_favicon_256px.png' style='width: 10%; height: 10%' align='left'/> __Run in Google Colab__  | <img src='../img/GitHub-Mark-32px.png'/> __View source on Github__  |
-
-<div>
-<img src='../img/colab_favicon_256px.png' style='width: 5%; height: 5%' align='left'/>Run in Google Colab  <br>
-<img src='../img/GitHub-Mark-32px.png'/>  View source on Github
-</div>
-
-<br>
-
-
+[Run in Google Colab](https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/Himawari8.ipynb) 
 
 This notebook provides a simple connector that allows to download, read and regrid the Himawari-8 data available in the 'noaa-himawari8' AWS S3 bucket. The connector used here could be improved and resigned in a way similar to the python interface to the 'noaa-goes16' and 'noaa-goes17' AWS S3 bucket provided by the goeasaws python package available under MIT license here: https://github.com/mnichol3/goesaws
 
