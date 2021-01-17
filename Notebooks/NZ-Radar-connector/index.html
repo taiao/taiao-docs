@@ -1,0 +1,1472 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Artificial Intelligence for Advanced Open Environmental Science">
+      
+      
+        <link rel="canonical" href="https://taiaoml.xyz/Notebooks/NZ-Radar-connector/">
+      
+      
+        <meta name="author" content="The taiao developers">
+      
+      <link rel="shortcut icon" href="../../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>NZ MetServices rain radar network - Taiao</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../css/version-select.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="indigo">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nz-radar-raw-data-connector" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://taiaoml.xyz" title="Taiao" class="md-header-nav__button md-logo" aria-label="Taiao">
+      
+  <img src="../../img/Untitled.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Taiao
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              NZ MetServices rain radar network
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/jacobmontiel/taiao-docs/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    taiao-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../About-Us/Taiao/" class="md-tabs__link">
+          About Us
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Datasets/Aggregated-wave-and-atmospheric-forecast/" class="md-tabs__link">
+          Datasets
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../critter-detector/" class="md-tabs__link md-tabs__link--active">
+          Notebooks
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Software/River/" class="md-tabs__link">
+          Software
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Tutorials/Notebooks-Python/" class="md-tabs__link">
+          Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Discuss/forum/" class="md-tabs__link">
+          Discuss
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://taiaoml.xyz" title="Taiao" class="md-nav__button md-logo" aria-label="Taiao">
+      
+  <img src="../../img/Untitled.png" alt="logo">
+
+    </a>
+    Taiao
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/jacobmontiel/taiao-docs/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    taiao-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      About Us
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="About Us" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        About Us
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../About-Us/Taiao/" class="md-nav__link">
+      Taiao
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../About-Us/Our-Team/" class="md-nav__link">
+      Our Team
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Datasets
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Datasets" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Datasets
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Aggregated-wave-and-atmospheric-forecast/" class="md-nav__link">
+      Aggregated wave and atmospheric forecast
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Auckland-hamilton-aerial-photography/" class="md-nav__link">
+      Auckland/Hamilton aerial photography
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Water-quality-discharge-BOP/" class="md-nav__link">
+      Bay of Plenty Regional Council Water Quality and Discharge data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Blitzen-lightning-feed/" class="md-nav__link">
+      Blitzen lightning feed
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Coromandel-River-Rain-gauge/" class="md-nav__link">
+      Coromandel River & Rain gauge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Critter-detector/" class="md-nav__link">
+      Critter Detector
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Global-topography/" class="md-nav__link">
+      Global Topography
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Google-earth-geospatial-data-sets/" class="md-nav__link">
+      Google Earth Data Catalog
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/GPATS-Oceania-lightning/" class="md-nav__link">
+      GPATS Oceania lightning feed
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Himawari-8-weather-satellite/" class="md-nav__link">
+      Himawari 8 Weather Satellite
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Images-of-wildlife-from-cameras/" class="md-nav__link">
+      Images of wildlife from cameras
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Landsat-8-remote-sensing/" class="md-nav__link">
+      Landsat 8 - Remote sensing data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/LILA-Wellington-Camera-Trap/" class="md-nav__link">
+      LILA Wellington Camera Trap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Metocean-wave-buoy/" class="md-nav__link">
+      MetOcean wave buoys (Campbell Island & Southern Ocean)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Automatic-Weather-stations/" class="md-nav__link">
+      MetService automatic weather stations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Moana-hydrodynamic-hindcast/" class="md-nav__link">
+      Moana 25 year hydrodynamic hindcast of New Zealand waters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/NZ-Radar-dataset/" class="md-nav__link">
+      NZ MetServices Rain Radar network
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Sentinel-Satellite-snapshot-of-Waikato-region/" class="md-nav__link">
+      Sentinel Satellite snapshot of Waikato region
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/TAO-lightening-feed/" class="md-nav__link">
+      TAO lightening feed
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Datasets/Tropical-Cyclone-archive/" class="md-nav__link">
+      Tropical Cyclone archive
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Notebooks
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Notebooks" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Notebooks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../critter-detector/" class="md-nav__link">
+      Critter Detector
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Himawari8/" class="md-nav__link">
+      Himawari8 AWS data connector
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metocean-obs-api-connector/" class="md-nav__link">
+      MetOcean Solutions API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Moana-thredds-server-connector/" class="md-nav__link">
+      Moana thredds server connector
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        NZ MetServices rain radar network
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      NZ MetServices rain radar network
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python-libraries" class="md-nav__link">
+    Python libraries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-the-raw-radar-data" class="md-nav__link">
+    Reading the raw radar data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting-the-raw-data" class="md-nav__link">
+    Plotting the raw data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gridded-composite-radar-fields" class="md-nav__link">
+    Gridded composite radar fields
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../TAIAO-UseCase_4.md" class="md-nav__link">
+      Taiao Case 4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Moana-thredds-server-connector/" class="md-nav__link">
+      Moana thredds server connector
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Software
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Software" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Software
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Software/River/" class="md-nav__link">
+      River
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Software/Explainable-Ai/" class="md-nav__link">
+      Explainable AI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Software/Weka/" class="md-nav__link">
+      Weka
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Software/Moa/" class="md-nav__link">
+      Moa
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Software/Adams/" class="md-nav__link">
+      Adams
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Tutorials
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tutorials/Notebooks-Python/" class="md-nav__link">
+      Notebooks & Python an Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Discuss
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Discuss" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Discuss
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Discuss/forum/" class="md-nav__link">
+      Forum
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python-libraries" class="md-nav__link">
+    Python libraries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-the-raw-radar-data" class="md-nav__link">
+    Reading the raw radar data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting-the-raw-data" class="md-nav__link">
+    Plotting the raw data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gridded-composite-radar-fields" class="md-nav__link">
+    Gridded composite radar fields
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/jacobmontiel/taiao-docs/edit/master/docs/Notebooks/NZ-Radar-connector.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="nz-radar-raw-data-connector">NZ radar raw data connector<a class="headerlink" href="#nz-radar-raw-data-connector" title="Permanent link">&para;</a></h1>
+<p><a href="https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/NZ-Radar-connector.ipynb">Run in Google Colab</a></p>
+<p>Author: Sebastien Delaux</p>
+<p>This notebook describes how to work with the raw radar files produced by the MetServices rain radar network. It shows how to read them and interact with the key quantities to plot the data.
+The last part of this notebook shows how multiple radar files (files corresponding to different locations). Can be blended to create a composite 3D or 2D gridded version of the data.</p>
+<p>MetService is in the process of deciding under which license the data will be made available. For now only a few sample files have been added to this repository for illustration purposes. Please contact the author to arrange access to a larger sample of files.</p>
+<h2 id="python-libraries">Python libraries<a class="headerlink" href="#python-libraries" title="Permanent link">&para;</a></h2>
+<p>We install pyart which is a python library specilised in dealing with raw radar data. We also load matplotlib which will be used to generate plots.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">sys</span>
+<span class="err">!</span><span class="p">{</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">}</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">arm</span><span class="o">-</span><span class="n">pyart</span> <span class="n">matplotlib</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>Collecting arm-pyart
+Collecting matplotlib
+  Using cached https://files.pythonhosted.org/packages/93/4b/52da6b1523d5139d04e02d9e26ceda6146b48f2a4e5d2abfdf1c7bac8c40/matplotlib-3.2.1-cp36-cp36m-manylinux1_x86_64.whl
+Collecting cycler&gt;=0.10 (from matplotlib)
+  Using cached https://files.pythonhosted.org/packages/f7/d2/e07d3ebb2bd7af696440ce7e754c59dd546ffe1bbe732c8ab68b9c834e61/cycler-0.10.0-py2.py3-none-any.whl
+Collecting pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 (from matplotlib)
+  Using cached https://files.pythonhosted.org/packages/5d/bc/1e58593167fade7b544bfe9502a26dc860940a79ab306e651e7f13be68c2/pyparsing-2.4.6-py2.py3-none-any.whl
+Collecting kiwisolver&gt;=1.0.1 (from matplotlib)
+  Using cached https://files.pythonhosted.org/packages/f8/a1/5742b56282449b1c0968197f63eae486eca2c35dcd334bab75ad524e0de1/kiwisolver-1.1.0-cp36-cp36m-manylinux1_x86_64.whl
+Collecting numpy&gt;=1.11 (from matplotlib)
+  Using cached https://files.pythonhosted.org/packages/07/08/a549ba8b061005bb629b76adc000f3caaaf881028b963c2e18f811c6edc1/numpy-1.18.2-cp36-cp36m-manylinux1_x86_64.whl
+Collecting python-dateutil&gt;=2.1 (from matplotlib)
+  Using cached https://files.pythonhosted.org/packages/d4/70/d60450c3dd48ef87586924207ae8907090de0b306af2bce5d134d78615cb/python_dateutil-2.8.1-py2.py3-none-any.whl
+Collecting six (from cycler&gt;=0.10-&gt;matplotlib)
+  Using cached https://files.pythonhosted.org/packages/65/eb/1f97cb97bfc2390a276969c6fae16075da282f5058082d4cb10c6c5c1dba/six-1.14.0-py2.py3-none-any.whl
+Collecting setuptools (from kiwisolver&gt;=1.0.1-&gt;matplotlib)
+  Using cached https://files.pythonhosted.org/packages/a0/df/635cdb901ee4a8a42ec68e480c49f85f4c59e8816effbf57d9e6ee8b3588/setuptools-46.1.3-py3-none-any.whl
+Installing collected packages: arm-pyart, six, cycler, pyparsing, setuptools, kiwisolver, numpy, python-dateutil, matplotlib
+Successfully installed arm-pyart-1.11.1 cycler-0.10.0 kiwisolver-1.1.0 matplotlib-3.2.1 numpy-1.18.2 pyparsing-2.4.6 python-dateutil-2.8.1 setuptools-46.1.3 six-1.14.0
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pyart</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>## You are using the Python ARM Radar Toolkit (Py-ART), an open source
+## library for working with weather radar data. Py-ART is partly
+## supported by the U.S. Department of Energy as part of the Atmospheric
+## Radiation Measurement (ARM) Climate Research Facility, an Office of
+## Science user facility.
+##
+## If you use this software to prepare a publication, please cite:
+##
+##     JJ Helmus and SM Collis, JORS 2016, doi: 10.5334/jors.119
+
+
+
+/usr/local/lib/python3.6/dist-packages/_pytest/mark/structures.py:370: DeprecationWarning: The usage of `cmp` is deprecated and will be removed on or after 2021-06-01.  Please use `eq` and `order` instead.
+  @attr.s(cmp=False, hash=False)
+</code></pre></div>
+
+<h2 id="reading-the-raw-radar-data">Reading the raw radar data<a class="headerlink" href="#reading-the-raw-radar-data" title="Permanent link">&para;</a></h2>
+<p>The New Zealand MetService's radar data are generated by a network of 8 doppler radars spread around New Zealand. Each radar does a scan of it's surroundings every 7 to 8 minutes. The radar operate independantly and produce one file for every scan.</p>
+<p>Let's read one of the example files and look at the structure of the data.
+First we use pyart to load the data in the shape of a radar object.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;./sample_data/BOP170101000556.RAWSURV&#39;</span>
+<span class="n">radar</span> <span class="o">=</span> <span class="n">pyart</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The documentation for radar object just loaded can be found here: http://arm-doe.github.io/pyart-docs-travis/API/generated/pyart.core.Radar.html#pyart.core.Radar</p>
+<p>The radar files contain polar data from two sweeps (two revolution of the radar beam each for a different vertical angle). Each sweep contains data over a number of rays (angle) and gates (segments in the radial direction). Informations about the content of the file can be found using the info function of the radar object.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">radar</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>altitude:
+    data: &lt;ndarray of type: float64 and shape: (1,)&gt;
+    long_name: Altitude
+    standard_name: Altitude
+    units: meters
+    positive: up
+altitude_agl: None
+antenna_transition: None
+azimuth:
+    data: &lt;ndarray of type: float32 and shape: (840,)&gt;
+    units: degrees
+    standard_name: beam_azimuth_angle
+    long_name: azimuth_angle_from_true_north
+    axis: radial_azimuth_coordinate
+    comment: Azimuth of antenna relative to true north
+elevation:
+    data: &lt;ndarray of type: float32 and shape: (840,)&gt;
+    units: degrees
+    standard_name: beam_elevation_angle
+    long_name: elevation_angle_from_horizontal_plane
+    axis: radial_elevation_coordinate
+    comment: Elevation of antenna relative to the horizontal plane
+fields:
+    total_power:
+        data: &lt;ndarray of type: float32 and shape: (840, 1000)&gt;
+        units: dBZ
+        standard_name: equivalent_reflectivity_factor
+        long_name: Total power
+        coordinates: elevation azimuth range
+        _FillValue: -9999.0
+    reflectivity:
+        data: &lt;ndarray of type: float32 and shape: (840, 1000)&gt;
+        units: dBZ
+        standard_name: equivalent_reflectivity_factor
+        long_name: Reflectivity
+        coordinates: elevation azimuth range
+        _FillValue: -9999.0
+fixed_angle:
+    data: &lt;ndarray of type: float32 and shape: (2,)&gt;
+    long_name: Target angle for sweep
+    units: degrees
+    standard_name: target_fixed_angle
+instrument_parameters:
+    unambiguous_range:
+        data: &lt;ndarray of type: float32 and shape: (840,)&gt;
+        units: meters
+        comments: Unambiguous range
+        meta_group: instrument_parameters
+        long_name: Unambiguous range
+    prt_mode:
+        data: &lt;ndarray of type: |S5 and shape: (2,)&gt;
+        comments: Pulsing mode Options are: &quot;fixed&quot;, &quot;staggered&quot;, &quot;dual&quot;. Assumed &quot;fixed&quot; if missing.
+        meta_group: instrument_parameters
+        long_name: Pulsing mode
+        units: unitless
+    prt:
+        data: &lt;ndarray of type: float32 and shape: (840,)&gt;
+        units: seconds
+        comments: Pulse repetition time. For staggered prt, also see prt_ratio.
+        meta_group: instrument_parameters
+        long_name: Pulse repetition time
+    prt_ratio:
+        data: &lt;ndarray of type: float32 and shape: (840,)&gt;
+        units: unitless
+        meta_group: instrument_parameters
+        long_name: Pulse repetition frequency ratio
+    nyquist_velocity:
+        data: &lt;ndarray of type: float32 and shape: (840,)&gt;
+        units: meters_per_second
+        comments: Unambiguous velocity
+        meta_group: instrument_parameters
+        long_name: Nyquist velocity
+    radar_beam_width_h:
+        data: &lt;ndarray of type: float32 and shape: (1,)&gt;
+        units: degrees
+        meta_group: radar_parameters
+        long_name: Antenna beam width H polarization
+    radar_beam_width_v:
+        data: &lt;ndarray of type: float32 and shape: (1,)&gt;
+        units: degrees
+        meta_group: radar_parameters
+        long_name: Antenna beam width V polarization
+    pulse_width:
+        data: &lt;ndarray of type: float32 and shape: (840,)&gt;
+        units: seconds
+        comments: Pulse width
+        meta_group: instrument_parameters
+        long_name: Pulse width
+latitude:
+    data: &lt;ndarray of type: float64 and shape: (1,)&gt;
+    long_name: Latitude
+    standard_name: Latitude
+    units: degrees_north
+longitude:
+    data: &lt;ndarray of type: float64 and shape: (1,)&gt;
+    long_name: Longitude
+    standard_name: Longitude
+    units: degrees_east
+nsweeps: 2
+ngates: 1000
+nrays: 840
+radar_calibration: None
+range:
+    data: &lt;ndarray of type: float32 and shape: (1000,)&gt;
+    units: meters
+    standard_name: projection_range_coordinate
+    long_name: range_to_measurement_volume
+    axis: radial_range_coordinate
+    spacing_is_constant: true
+    comment: Coordinate variable for range. Range to center of each bin.
+    meters_to_center_of_first_gate: [0.]
+    meters_between_gates: [300.]
+scan_rate: None
+scan_type: ppi
+sweep_end_ray_index:
+    data: &lt;ndarray of type: int32 and shape: (2,)&gt;
+    long_name: Index of last ray in sweep, 0-based
+    units: count
+sweep_mode:
+    data: &lt;ndarray of type: |S20 and shape: (2,)&gt;
+    units: unitless
+    standard_name: sweep_mode
+    long_name: Sweep mode
+    comment: Options are: &quot;sector&quot;, &quot;coplane&quot;, &quot;rhi&quot;, &quot;vertical_pointing&quot;, &quot;idle&quot;, &quot;azimuth_surveillance&quot;, &quot;elevation_surveillance&quot;, &quot;sunscan&quot;, &quot;pointing&quot;, &quot;manual_ppi&quot;, &quot;manual_rhi&quot;
+sweep_number:
+    data: &lt;ndarray of type: int32 and shape: (2,)&gt;
+    units: count
+    standard_name: sweep_number
+    long_name: Sweep number
+sweep_start_ray_index:
+    data: &lt;ndarray of type: int32 and shape: (2,)&gt;
+    long_name: Index of first ray in sweep, 0-based
+    units: count
+target_scan_rate: None
+time:
+    data: &lt;ndarray of type: float64 and shape: (840,)&gt;
+    units: seconds since 2017-01-01T00:05:56Z
+    standard_name: time
+    long_name: time_in_seconds_since_volume_start
+    calendar: gregorian
+    comment: Coordinate variable for time. Time at the center of each ray, in fractional seconds since the global variable time_coverage_start
+metadata:
+    Conventions: CF/Radial instrument_parameters
+    version: 1.3
+    title: 
+    institution: 
+    references: 
+    source: 
+    history: 
+    comment: 
+    instrument_name: b&#39;radbp&#39;
+    original_container: sigmet
+    sigmet_task_name: b&#39;SURVEILLANCE&#39;
+    sigmet_extended_header: false
+    time_ordered: none
+    rays_missing: 0
+</code></pre></div>
+
+<h2 id="plotting-the-raw-data">Plotting the raw data<a class="headerlink" href="#plotting-the-raw-data" title="Permanent link">&para;</a></h2>
+<p>The raw data from the two sweeps are stored in a single two dimensional array. They can be plotted in the form of two polar plots.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="c1"># Create nsweeps polar plots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">radar</span><span class="o">.</span><span class="n">nsweeps</span><span class="p">,</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">polar</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+
+<span class="c1"># For each plot find start and end indices</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">istart</span><span class="p">,</span> <span class="n">iend</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="o">.</span><span class="n">flat</span><span class="p">,</span> <span class="n">radar</span><span class="o">.</span><span class="n">sweep_start_ray_index</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">radar</span><span class="o">.</span><span class="n">sweep_end_ray_index</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]):</span>
+    <span class="c1"># Convert azimuth to geometric angle</span>
+    <span class="n">geometric_angle</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">radar</span><span class="o">.</span><span class="n">azimuth</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="n">istart</span><span class="p">:</span><span class="n">iend</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mf">180.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+    <span class="c1"># Create grid from indices</span>
+    <span class="n">R</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">radar</span><span class="o">.</span><span class="n">range</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">/</span><span class="mf">1000.</span><span class="p">,</span> <span class="n">geometric_angle</span><span class="p">)</span>
+
+    <span class="c1"># Plot data on grid</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">radar</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;reflectivity&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="n">istart</span><span class="p">:</span><span class="n">iend</span><span class="o">+</span><span class="mi">1</span><span class="p">,:],</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">right</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">cbar_ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cbar_ax</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Reflectivity (dBZ)&quot;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="png" src="../NZ_Radar_connector_files/NZ_Radar_connector_10_0.png" /></p>
+<p>Those two plots allow to get a good idea of the horizontal spreading of the reflectivity field. However the data recorded by the radar is three-dimensional and slightly spread over time. Indeed, as shows below it takes about 1 minute for the two sweeps to be recorded.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">radar</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Time since start of scan (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;ID for ray&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>Text(0.5, 0, &#39;ID for ray&#39;)
+</code></pre></div>
+
+<p><img alt="png" src="../NZ_Radar_connector_files/NZ_Radar_connector_12_1.png" /></p>
+<h2 id="gridded-composite-radar-fields">Gridded composite radar fields<a class="headerlink" href="#gridded-composite-radar-fields" title="Permanent link">&para;</a></h2>
+<p>Though the radars are not fully in sync, the frequency at which they perform their scans is about 7 minutes and in many cases it is OK to assume that all the nearest measurments in time of all New Zealand radars can be collated together to create a snapshot representation of the reflectivity field all over New Zealand at a given time. In that case we have to depart from a polar few of the reflectivity field and blend the data from the different radar over a rectilinear grid.
+The present section gives an example of how two radar files, one coming from the Auckland radar (AKL...) and one coming from the Bay of Plenty radar (BOP...) can be blended together onto a single grid. In the process some minor filtering is applied to the data. An azimithal equidistant projection with longitude/latitude origin (175.5, -37.0) output coordinate system is used as well as 41 levels in the vertical. More information on the regridding function can be found here: https://arm-doe.github.io/pyart/API/generated/pyart.map.grid_from_radars.html#pyart.map.grid_from_radars</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Path to the 2 files to collate</span>
+<span class="n">radar_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;./sample_data/AKL170101000558.RAWSURV&#39;</span><span class="p">,</span> <span class="s1">&#39;./sample_data/BOP170101000556.RAWSURV&#39;</span><span class="p">]</span>
+
+<span class="c1"># Loading the data</span>
+<span class="n">radars</span> <span class="o">=</span> <span class="p">[</span><span class="n">pyart</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">radar_files</span><span class="p">]</span>
+
+<span class="c1"># Set filters for the radar object</span>
+<span class="n">filters</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">radar</span> <span class="ow">in</span> <span class="n">radars</span><span class="p">:</span>
+    <span class="n">gatefilter</span> <span class="o">=</span> <span class="n">pyart</span><span class="o">.</span><span class="n">correct</span><span class="o">.</span><span class="n">despeckle</span><span class="o">.</span><span class="n">despeckle_field</span><span class="p">(</span><span class="n">radar</span><span class="p">,</span> <span class="s1">&#39;reflectivity&#39;</span><span class="p">,</span>
+                                                         <span class="n">threshold</span><span class="o">=-</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">gatefilter</span><span class="o">.</span><span class="n">exclude_transition</span><span class="p">()</span>
+    <span class="n">gatefilter</span><span class="o">.</span><span class="n">exclude_above</span><span class="p">(</span><span class="s1">&#39;reflectivity&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+    <span class="n">filters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gatefilter</span><span class="p">)</span>
+
+<span class="c1"># Do regridding    </span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">pyart</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">grid_from_radars</span><span class="p">(</span><span class="n">radars</span><span class="p">,</span> <span class="n">gatefilters</span><span class="o">=</span><span class="n">filters</span><span class="p">,</span>
+                                  <span class="n">grid_shape</span><span class="o">=</span> <span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="mi">2250</span><span class="p">,</span> <span class="mi">2000</span><span class="p">),</span>
+                                  <span class="n">grid_limits</span><span class="o">=</span> <span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">20000.0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">460000.0</span><span class="p">,</span> <span class="mf">460000.0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">400000.0</span><span class="p">,</span> <span class="mf">400000.0</span><span class="p">]),</span>
+                                  <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;reflectivity&#39;</span><span class="p">],</span>
+                                  <span class="n">max_refl</span><span class="o">=</span> <span class="mf">80.</span><span class="p">,</span>
+                                  <span class="n">copy_field_data</span><span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                                  <span class="n">grid_origin</span><span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">37.0</span><span class="p">,</span> <span class="mf">175.5</span><span class="p">),</span>
+                                  <span class="n">roi_func</span><span class="o">=</span> <span class="s1">&#39;dist_beam&#39;</span><span class="p">,</span>
+                                  <span class="n">min_radius</span><span class="o">=</span> <span class="mf">500.0</span><span class="p">,</span>
+                                  <span class="n">h_factor</span><span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+                                  <span class="n">nb</span><span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+                                  <span class="n">bsp</span><span class="o">=</span> <span class="mf">1.0</span>
+                                 <span class="p">)</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>/home/sebastien/.local/lib/python3.6/site-packages/pyart/map/gates_to_grid.py:162: DeprecationWarning: Barnes weighting function is deprecated. Please use Barnes 2 to be consistent with Pauley and Wu 1990.
+  &quot; Pauley and Wu 1990.&quot;, DeprecationWarning)
+</code></pre></div>
+
+<p>Now we can plot five cross-sections of the gridded data at 5 fixes vertical levels (every 10 vertical levels of the grid). And get an idea of the 3D structure of the data.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="o">.</span><span class="n">flat</span><span class="p">,</span> <span class="n">grid</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;reflectivity&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">10</span><span class="p">,:,:]):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="png" src="../NZ_Radar_connector_files/NZ_Radar_connector_16_0.png" /></p>
+<p>We can also plot cross-sections along the north-south and east-west directiontp get an idea of the vertical structure of the data</p>
+<div class="codehilite"><pre><span></span><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">/</span><span class="mf">1000.</span><span class="p">,</span> <span class="n">grid</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][:</span><span class="mi">30</span><span class="p">]</span><span class="o">/</span><span class="mf">1000.</span><span class="p">,</span>
+                 <span class="n">grid</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;reflectivity&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">][:</span><span class="mi">30</span><span class="p">,</span><span class="mi">1125</span><span class="p">,:])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Distance from radar&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Height agl (km)&quot;</span><span class="p">)</span>
+
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">/</span><span class="mf">1000.</span><span class="p">,</span> <span class="n">grid</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][:</span><span class="mi">30</span><span class="p">]</span><span class="o">/</span><span class="mf">1000.</span><span class="p">,</span>
+          <span class="n">grid</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;reflectivity&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">][:</span><span class="mi">30</span><span class="p">,:,</span><span class="mi">1000</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Distance from radar&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>[Text(0.5, 0, &#39;Distance from radar&#39;)]
+</code></pre></div>
+
+<p><img alt="png" src="../NZ_Radar_connector_files/NZ_Radar_connector_18_1.png" /></p>
+<p>3D data can be quite heavy to work with and something one only consider the maximum reflectivity over the atmospheric column.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">grid</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span>
+           <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;reflectivity&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">][:,:,:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Easting&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Northing&#39;</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Radius of influence&quot;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="png" src="../NZ_Radar_connector_files/NZ_Radar_connector_20_0.png" /></p>
+<p>One can always keep some information on the vertical structure by storing the height at which the maximum in reflectivity was found</p>
+<div class="codehilite"><pre><span></span><code><span class="n">max_reflectivity_height</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;reflectivity&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">][:,:,:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">grid</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">max_reflectivity_height</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Easting&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Northing&#39;</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Height of maximum reflectivity (m)&quot;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="png" src="../NZ_Radar_connector_files/NZ_Radar_connector_23_0.png" /></p>
+<p>An additional field that is produced during the regridding process is the radius of influence. This quantify the distance between the data point in the grid and the instrument that recorded it. This is an important quantity as the resolution and hence quality of the data drops with the distance from the instrument.
+On the plot below one can clearly see that two sources were used to created the grid, their location and how the radius of influence increases with the distance from the radars.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">grid</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">grid</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;ROI&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,:,:])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Easting&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Northing&#39;</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Radius of influence&quot;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="png" src="../NZ_Radar_connector_files/NZ_Radar_connector_25_0.png" /></p>
+<div class="codehilite"><pre><span></span><code>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+
+<!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2020
+          </div>
+        
+        Made with
+        <a
+          href="https://squidfunk.github.io/mkdocs-material/"
+          target="_blank" rel="noopener"
+        >
+          Material for MkDocs
+        </a>
+      </div>
+
+      <!-- Social links -->
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/abifet/taiao-docs" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.tabs', 'navigation.instant'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../js/version-select.js"></script>
+      
+    
+  </body>
+</html>
