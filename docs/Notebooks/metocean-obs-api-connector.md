@@ -1,6 +1,6 @@
 # MetOcean Solutions Observation API connector
 
-[Run in Google Colab](https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/metocean_obs_api_connector.ipynb)
+[Run in Google Colab](https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/metocean-obs-api-connector.ipynb)
 
 **Author:** Sebastien Delaux
 
