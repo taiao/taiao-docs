@@ -1,7 +1,21 @@
-# Himawari-8 data connector
-
 [Run in Google Colab](https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/Himawari8.ipynb) 
-
+#### GitHub repository
+N/A
+#### Datasets
+[AWS NOAA archive](https://registry.opendata.aws/noaa-himawari/).  
+Two kilometer [half disc](ftp://ftp.ptree.jaxa.jp/jma/netcdf) archive.  
+Please see the [Datasets page](../Datasets/Himawari-8-weather-satellite.md) for further details.
+#### Author
+N/A
+#### License
+N/A
+#### Technologies
+AWS S3 Bucket
+#### Tags
+Observation, Remote-sensing, visible, infrared, AWS
+<br>
+<br>
+<br>
 This notebook provides a simple connector that allows to download, read and regrid the Himawari-8 data available in the 'noaa-himawari8' AWS S3 bucket. The connector used here could be improved and resigned in a way similar to the python interface to the 'noaa-goes16' and 'noaa-goes17' AWS S3 bucket provided by the goeasaws python package available under MIT license here: https://github.com/mnichol3/goesaws
 
 The notebook relies on the boto3 libray to interect with Amazon S3 buckets (https://github.com/boto/boto3), SatPy and Pyresample to read, reproject and resample the satellite data (https://satpy.readthedocs.io/en/latest/index.html) and matplotlib to plot results.
