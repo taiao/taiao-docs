@@ -1,6 +1,6 @@
 ![Adams](../img/adams_logo.png)
 
-# Adams
+# ADAMS
 
 The Advanced Data mining And Machine learning System ([ADAMS](https://adams.cms.waikato.ac.nz/)) is a flexible workflow engine aimed at quickly building and maintaining data-driven, reactive workflows, easily integrated into business processes, released under GPLv3.
 
