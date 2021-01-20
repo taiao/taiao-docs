@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#himawari-8-data-connector" class="md-skip">
+        <a href="#github-repository" class="md-skip">
           Skip to content
         </a>
       
@@ -345,6 +345,18 @@
   <li class="md-nav__item">
     <a href="../../About-Us/Our-Team/" class="md-nav__link">
       Our Team
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Get-Involved.md" class="md-nav__link">
+      Get Involved
     </a>
   </li>
 
@@ -666,12 +678,72 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
-      
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Himawari8 AWS data connector
+        <span class="md-nav__icon md-icon"></span>
+      </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
       Himawari8 AWS data connector
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#github-repository" class="md-nav__link">
+    GitHub repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    Datasets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#author" class="md-nav__link">
+    Author
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technologies" class="md-nav__link">
+    Technologies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    Tags
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -917,8 +989,56 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#github-repository" class="md-nav__link">
+    GitHub repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    Datasets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#author" class="md-nav__link">
+    Author
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technologies" class="md-nav__link">
+    Technologies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    Tags
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -931,9 +1051,27 @@
               
                 
                 
-                <h1 id="himawari-8-data-connector">Himawari-8 data connector<a class="headerlink" href="#himawari-8-data-connector" title="Permanent link">&para;</a></h1>
-<p><a href="https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/Himawari8.ipynb">Run in Google Colab</a> </p>
-<p>This notebook provides a simple connector that allows to download, read and regrid the Himawari-8 data available in the 'noaa-himawari8' AWS S3 bucket. The connector used here could be improved and resigned in a way similar to the python interface to the 'noaa-goes16' and 'noaa-goes17' AWS S3 bucket provided by the goeasaws python package available under MIT license here: https://github.com/mnichol3/goesaws</p>
+                  <h1>Himawari8 AWS data connector</h1>
+                
+                <p><a href="https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/Himawari8.ipynb">Run in Google Colab</a> </p>
+<h4 id="github-repository">GitHub repository<a class="headerlink" href="#github-repository" title="Permanent link">&para;</a></h4>
+<p>N/A</p>
+<h4 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">&para;</a></h4>
+<p><a href="https://registry.opendata.aws/noaa-himawari/">AWS NOAA archive</a>.<br />
+Two kilometer <a href="ftp://ftp.ptree.jaxa.jp/jma/netcdf">half disc</a> archive.<br />
+Please see the <a href="../../Datasets/Himawari-8-weather-satellite/">Datasets page</a> for further details.</p>
+<h4 id="author">Author<a class="headerlink" href="#author" title="Permanent link">&para;</a></h4>
+<p>N/A</p>
+<h4 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h4>
+<p>N/A</p>
+<h4 id="technologies">Technologies<a class="headerlink" href="#technologies" title="Permanent link">&para;</a></h4>
+<p>AWS S3 Bucket</p>
+<h4 id="tags">Tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h4>
+<p>Observation, Remote-sensing, visible, infrared, AWS
+<br>
+<br>
+<br>
+This notebook provides a simple connector that allows to download, read and regrid the Himawari-8 data available in the 'noaa-himawari8' AWS S3 bucket. The connector used here could be improved and resigned in a way similar to the python interface to the 'noaa-goes16' and 'noaa-goes17' AWS S3 bucket provided by the goeasaws python package available under MIT license here: https://github.com/mnichol3/goesaws</p>
 <p>The notebook relies on the boto3 libray to interect with Amazon S3 buckets (https://github.com/boto/boto3), SatPy and Pyresample to read, reproject and resample the satellite data (https://satpy.readthedocs.io/en/latest/index.html) and matplotlib to plot results.</p>
 <p>First all required libraries are loaded</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span><span class="o">,</span> <span class="nn">os</span>
