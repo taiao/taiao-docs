@@ -1,4 +1,4 @@
-![River](../img/river_logo.svg)
+<img width="50%" height="50%" src="/img/river_logo.svg"> 
 
 # River
 
