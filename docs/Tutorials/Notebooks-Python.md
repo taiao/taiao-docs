@@ -1,7 +1,7 @@
 # How to use Jupyter Notebooks and Python
 
-<img width="10%" height="10%" src="/img/icon-hires.png">
-<img width="30%" height="30%" src="/img/python-logo-master-v3-TM.png">
+<img width="10%" height="10%" src="/taiao-docs/img/icon-hires.png">
+<img width="30%" height="30%" src="/taiao-docs/img/python-logo-master-v3-TM.png">
 
 This instructional material will provide an introductory guide to [Jupyter Notebooks](https://jupyter.org/) and the [Python](https://www.python.org/) programming language.
 
@@ -43,7 +43,7 @@ Professor Albert Bifet will cover the following topics:
 
 
 <video class="video" width="640" height="360" controls>
-    <source src="/video/Notebooks_Python_Prof_Albert Bifet.mp4" type="video/mp4">
+    <source src="/taiao-docs/video/Notebooks_Python_Prof_Albert Bifet.mp4" type="video/mp4">
 </video>
 
 
