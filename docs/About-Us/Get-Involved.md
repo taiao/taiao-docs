@@ -1,8 +1,3 @@
 # Get involved
-##### Placeholder content.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum enim aliquet, faucibus nulla ultrices, pharetra augue. Morbi non lobortis est, vel lacinia odio. Aenean venenatis porta metus. Nam elit leo, tristique quis ipsum a, gravida hendrerit odio. Phasellus at sapien vel neque tempus eleifend. Nunc porta ac tortor a posuere. Mauris ultrices lacus non molestie consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-
-Donec eu urna id eros gravida malesuada sit amet eget ante. Nunc laoreet euismod felis at scelerisque. In sit amet consectetur erat. Sed in posuere justo, sed placerat neque. Aenean a lorem a orci viverra lacinia. Nullam a metus dui. Nam suscipit at felis vel maximus. Duis vel orci erat. Integer sed vestibulum lacus. Suspendisse risus orci, facilisis a magna vel, tincidunt elementum sapien. Vestibulum quis purus consectetur, venenatis metus congue, venenatis nulla.
-
-Nam vel gravida mauris, vel aliquet purus. Morbi cursus pharetra consequat. Curabitur non felis id lorem semper ultricies nec ut velit. Proin in elit enim. Curabitur a ex nibh. Aenean vitae euismod urna. Quisque dolor mi, gravida in enim at, ultrices pellentesque arcu. Duis ac luctus est, et gravida mi. Aenean malesuada maximus pulvinar. Sed id risus vitae dolor maximus ornare. Quisque faucibus nec eros vitae porta. Quisque ullamcorper, metus vitae malesuada semper, enim nulla egestas urna, ut volutpat leo ex id nisi. Cras ligula augue, iaculis in eleifend ac, eleifend eu lacus.
+Should you wish to become involved with the project, please contact <d.ramirez@waikato.ac.nz> for further details.

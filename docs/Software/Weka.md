@@ -1,4 +1,4 @@
-![Weka](../img/weka.png)
+<img width="20%" height="20%" src="/img/weka.png"> 
 
 # Weka
 

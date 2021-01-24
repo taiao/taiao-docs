@@ -1,6 +1,6 @@
 # Moana thredds server connector
 
-[Run in Google Colab](https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/Moana-thredds-server-connector.ipynb)
+### [Run in Google Colab](https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/Moana-thredds-server-connector.ipynb)
 
 #### GitHub repository
 GitHub repository is located [here](https://github.com/metocean/TAIAO/blob/master/data_connectors/moana_connectors/Moana%20thredds%20server%20connector.ipynb).

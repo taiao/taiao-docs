@@ -1,10 +1,37 @@
-# SciKit Learn
+# SciKit Learn - machine learning in Python
+<img width="20%" height="20%" src="/img/scikit-learn-logo.bmp">
+<br>
+Dr Heitor Murilo Gomes
 
-### Dr Heitor Murilo Gomes
 
-
-* Simple and efficient tools for predictive data analysis
-* Accessible to everybody, and reusable in various contexts
+* Python library
 * Built on NumPy, SciPy, and matplotlib
 * Open source, commercially usable - BSD license
+* Platform to build new research methods
+
+<video class="video" width="640" height="360" controls>
+    <source src="/video/Scikit-learn_ Dr. Heitor Gomes.mp4" type="video/mp4">
+</video>
+
+### Topics
+* Machine Learning
+    * Supervised
+        * Classification
+        * Regression
+    * Unsupervised
+        * Clustering
+    * Classification algorithms
+    * Models
+    * Deep Learning
+    * Feature extraction/classification
+    * Learning algorithm assumptions
+    * Evaluation
+* Scikit-learn
+    * Importing libraries
+    * Example task - iris dataset
+    * Training model
+    * Testing model
+    * Analysing results
+    * Confusion Matrix
+    * Where to from here
 

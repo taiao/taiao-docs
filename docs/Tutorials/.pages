@@ -1,2 +1,4 @@
 nav:
     - Notebooks & Python an Introduction: Notebooks-Python.md
+    - SciKit Learn - Machine Learning: SciKit-Learn.md
+    - River - Data Stream library: River-Library.md 

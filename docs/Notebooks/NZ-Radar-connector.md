@@ -1,6 +1,6 @@
 # NZ radar raw data connector
 
-[Run in Google Colab](https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/NZ-Radar-connector.ipynb)
+### [Run in Google Colab](https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/NZ-Radar-connector.ipynb)
 #### GitHub repository
 GitHub repository is located [here](https://github.com/metocean/TAIAO/tree/master/data_connectors/nzradar_connector/sample_data).
 #### Datasets
