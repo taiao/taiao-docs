@@ -1,5 +1,5 @@
 # River - a library for data stream mining
-<img width="20%" height="20%" src="/img/river_logo.svg">  
+<img width="20%" height="20%" src="/taiao-docs/img/river_logo.svg">  
 Dr Jacob Montiel
 <br>
 
@@ -14,7 +14,7 @@ researchers.
 * Expandable - River is a constantly evolving resource with new and updated tools providing additional, or improved, capabilities.
 
 <video class="video" width="640" height="360" controls>
-    <source src="/video/River_ Dr. Jacob Montiel.mp4" type="video/mp4">
+    <source src="/taiao-docs/video/River_ Dr. Jacob Montiel.mp4" type="video/mp4">
 </video>
 
 ### Topics
