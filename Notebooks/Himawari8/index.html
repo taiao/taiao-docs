@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#run-in-google-colab" class="md-skip">
+        <a href="#github-repository" class="md-skip">
           Skip to content
         </a>
       
@@ -695,57 +695,44 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#run-in-google-colab" class="md-nav__link">
-    Run in Google Colab
-  </a>
-  
-    <nav class="md-nav" aria-label="Run in Google Colab">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#github-repository" class="md-nav__link">
     GitHub repository
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#datasets" class="md-nav__link">
     Datasets
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#author" class="md-nav__link">
     Author
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#license" class="md-nav__link">
     License
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#technologies" class="md-nav__link">
     Technologies
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#tags" class="md-nav__link">
     Tags
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1003,57 +990,44 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#run-in-google-colab" class="md-nav__link">
-    Run in Google Colab
-  </a>
-  
-    <nav class="md-nav" aria-label="Run in Google Colab">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#github-repository" class="md-nav__link">
     GitHub repository
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#datasets" class="md-nav__link">
     Datasets
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#author" class="md-nav__link">
     Author
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#license" class="md-nav__link">
     License
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#technologies" class="md-nav__link">
     Technologies
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#tags" class="md-nav__link">
     Tags
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1072,8 +1046,7 @@
                 
                   <h1>Himawari8 AWS data connector</h1>
                 
-                <h3 id="run-in-google-colab"><a href="https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/Himawari8.ipynb">Run in Google Colab</a><a class="headerlink" href="#run-in-google-colab" title="Permanent link">&para;</a></h3>
-<h4 id="github-repository">GitHub repository<a class="headerlink" href="#github-repository" title="Permanent link">&para;</a></h4>
+                <details class="info"><summary>Info</summary><h4 id="github-repository">GitHub repository<a class="headerlink" href="#github-repository" title="Permanent link">&para;</a></h4>
 <p>N/A</p>
 <h4 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">&para;</a></h4>
 <p><a href="https://registry.opendata.aws/noaa-himawari/">AWS NOAA archive</a>.<br />
@@ -1086,11 +1059,9 @@ Please see the <a href="../../Datasets/Himawari-8-weather-satellite/">Datasets p
 <h4 id="technologies">Technologies<a class="headerlink" href="#technologies" title="Permanent link">&para;</a></h4>
 <p>AWS S3 Bucket</p>
 <h4 id="tags">Tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h4>
-<p>Observation, Remote-sensing, visible, infrared, AWS
-<br>
-<br>
-<br>
-This notebook provides a simple connector that allows to download, read and regrid the Himawari-8 data available in the 'noaa-himawari8' AWS S3 bucket. The connector used here could be improved and resigned in a way similar to the python interface to the 'noaa-goes16' and 'noaa-goes17' AWS S3 bucket provided by the goeasaws python package available under MIT license here: https://github.com/mnichol3/goesaws</p>
+<p>Observation, Remote-sensing, visible, infrared, AWS</p>
+</details>
+<p>This notebook provides a simple connector that allows to download, read and regrid the Himawari-8 data available in the 'noaa-himawari8' AWS S3 bucket. The connector used here could be improved and resigned in a way similar to the python interface to the 'noaa-goes16' and 'noaa-goes17' AWS S3 bucket provided by the goeasaws python package available under MIT license here: https://github.com/mnichol3/goesaws</p>
 <p>The notebook relies on the boto3 libray to interect with Amazon S3 buckets (https://github.com/boto/boto3), SatPy and Pyresample to read, reproject and resample the satellite data (https://satpy.readthedocs.io/en/latest/index.html) and matplotlib to plot results.</p>
 <p>First all required libraries are loaded</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span><span class="o">,</span> <span class="nn">os</span>
