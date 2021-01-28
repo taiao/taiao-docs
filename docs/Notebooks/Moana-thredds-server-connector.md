@@ -1,20 +1,19 @@
 ### [Run in Google Colab](https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/Moana-thredds-server-connector.ipynb)
 
-#### GitHub repository
-GitHub repository is located [here](https://github.com/metocean/TAIAO/blob/master/data_connectors/moana_connectors/Moana%20thredds%20server%20connector.ipynb).
-#### Datasets
-Please see the [Datasets page](../Datasets/Moana-hydrodynamic-hindcast.md) for further details.
-#### Author
-Sebastien Delaux
-#### License
-N/A
-#### Technologies
-N/A
-#### Tags
-Model, Hindcast, Sea, Current, SST
-<br>
-<br>
-<br>
+??? info
+    #### GitHub repository
+    GitHub repository is located [here](https://github.com/metocean/TAIAO/blob/master/data_connectors/moana_connectors/    Moana%20thredds%20server%20connector.ipynb).
+    #### Datasets
+    Please see the [Datasets page](../Datasets/Moana-hydrodynamic-hindcast.md) for further details.
+    #### Author
+    Sebastien Delaux
+    #### License
+    N/A
+    #### Technologies
+    N/A
+    #### Tags
+    Model, Hindcast, Sea, Current, SST
+
 Author: Sebastien Delaux
 
 This notebook describes how to get observation data from the thredds server set on top of the Moana 25 year hydrodynamic hindcast of New Zealand waters. The data is freely available from that server under the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (see https://www.moanaproject.org/data for more).

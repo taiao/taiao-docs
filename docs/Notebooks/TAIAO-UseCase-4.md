@@ -1,19 +1,18 @@
 ### [Run in Google Colab](https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/TAIAO-UseCase-4.ipynb)
-#### GitHub repository
-N/A
-#### Datasets
-Please see the [Datasets page](../Datasets/Coromandel-River-Rain-gauge.md) for further details.
-#### Author
-N/A
-#### License
-N/A
-#### Technologies
-N/A
-#### Tags
-Observation, time, intensity
-<br>
-<br>
-<br>
+??? info
+    #### GitHub repository
+    N/A
+    #### Datasets
+    Please see the [Datasets page](../Datasets/Coromandel-River-Rain-gauge.md) for further details.
+    #### Author
+    N/A
+    #### License
+    N/A
+    #### Technologies
+    N/A
+    #### Tags
+    Observation, time, intensity
+
 We load the required libraries used to train the LSTM 
 
 
