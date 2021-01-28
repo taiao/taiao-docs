@@ -1,21 +1,20 @@
 # NZ radar raw data connector
 
 ### [Run in Google Colab](https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/NZ-Radar-connector.ipynb)
-#### GitHub repository
-GitHub repository is located [here](https://github.com/metocean/TAIAO/tree/master/data_connectors/nzradar_connector/sample_data).
-#### Datasets
-Please see the [Datasets page](../Datasets/NZ-Radar-dataset.md) for further details.
-#### Author
-Sebastien Delaux
-#### License
-N/A
-#### Technologies
-Python
-#### Tags
-Observation, Atmosphere, Reflectivity
-<br>
-<br>
-<br>
+??? info
+    #### GitHub repository
+    GitHub repository is located [here](https://github.com/metocean/TAIAO/tree/master/data_connectors/nzradar_connector/sample_data).
+    #### Datasets
+    Please see the [Datasets page](../Datasets/NZ-Radar-dataset.md) for further details.
+    #### Author
+    Sebastien Delaux
+    #### License
+    N/A
+    #### Technologies
+    Python
+    #### Tags
+    Observation, Atmosphere, Reflectivity
+
 Author: Sebastien Delaux
 
 This notebook describes how to work with the raw radar files produced by the MetServices rain radar network. It shows how to read them and interact with the key quantities to plot the data.

@@ -2,21 +2,20 @@
 
 ### [Run in Google Colab](https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/metocean-obs-api-connector.ipynb)
 
-#### GitHub repository
-N/A
-#### Datasets
-Please see the Datasets pages, [here](../Datasets/Automatic-Weather-stations.md) and [here](../Datasets/Metocean-wave-buoy.md) for further details.
-#### Author
-Sebastien Delaux/Greg Pearson
-#### License
-N/A
-#### Technologies
-N/A
-#### Tags
-Observation, lightning, location, time, intensity, type, cyclone, trajectories
-<br>
-<br>
-<br>
+??? info
+    #### GitHub repository
+    N/A
+    #### Datasets
+    Please see the Datasets pages, [here](../Datasets/Automatic-Weather-stations.md) and [here](../Datasets/Metocean-wave-buoy.md) for     further details.
+    #### Author
+    Sebastien Delaux/Greg Pearson
+    #### License
+    N/A
+    #### Technologies
+    N/A
+    #### Tags
+    Observation, lightning, location, time, intensity, type, cyclone, trajectories
+
 **Author:** Sebastien Delaux
 
 This notebook describes how to get observation data from one of MetOcean Solutions' observation API.
