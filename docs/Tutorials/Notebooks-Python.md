@@ -39,7 +39,8 @@ Professor Albert Bifet will cover the following topics:
         * Visualisations.
 <br>
 * #### Additional Resources
-    * Introduction Notebook
+    * [Introduction Notebook](IntroductionNotebooks.ipynb)
+    * [Pytorch Notebook](Pytorch.ipynb)
 
 
 <video class="video" width="640" height="360" controls>
