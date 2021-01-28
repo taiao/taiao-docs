@@ -1,5 +1,3 @@
-# Moana thredds server connector
-
 ### [Run in Google Colab](https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/Moana-thredds-server-connector.ipynb)
 
 #### GitHub repository
@@ -471,3 +469,18 @@ ds.temp.plot(x='lat_rho', y='z_rho')
 ```python
 
 ```
+<br>
+#### Discussion forum
+
+<div id='discourse-comments'></div>
+
+<script type="text/javascript">
+  DiscourseEmbed = { discourseUrl: 'https://community.taiao.ai/',
+                     topicId: 18 };
+
+  (function() {
+    var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+    d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
