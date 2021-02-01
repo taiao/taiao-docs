@@ -1,5 +1,6 @@
 nav:
-    - Notebooks & Python an Introduction: Notebooks-Python.md
+    - Notebooks & Python - An Introduction: Notebooks-Python.md
     - SciKit Learn - Machine Learning: SciKit-Learn.md
     - River - Data Stream library: River-Library.md
     - PyTorch - An introduction: Pytorch.md
+    - Applications - Satellite derived bathymetry for intertidal zones: Applications1.md
