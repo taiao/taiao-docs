@@ -2,7 +2,7 @@
 # Our Team
 
 [Prof. Albert Bifet](https://www.waikato.ac.nz/staff-profiles/people/abifet), Project Leader, Department of Computer Science, University of Waikato  
-[Prof. Karin Bryan](https://sci.waikato.ac.nz/about-us/people/kbryan), Director [Environmental Research Institute](https://www.waikato.ac.nz/eri/), University of Waikato  
+[Prof. Karin Bryan](https://www.waikato.ac.nz/staff-profiles/people/kbryan), Director [Environmental Research Institute](https://www.waikato.ac.nz/eri/), University of Waikato  
 [Prof. Bernhard Pfahringer](https://www.waikato.ac.nz/staff-profiles/people/bernhard/), Department of Computer Science, University of Waikato  
 [Prof. Eibe Frank](https://www.waikato.ac.nz/staff-profiles/people/eibe/), Department of Computer Science, University of Waikato  
 [Assoc. Prof. Te Taka Keegan](https://www.cms.waikato.ac.nz/people/tetaka), Department of Computer Science, University of Waikato  

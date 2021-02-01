@@ -34,4 +34,7 @@ Dr Heitor Murilo Gomes
     * Analysing results
     * Confusion Matrix
     * Where to from here
+* Additional Resources
+    * [Jupyter Notebook](sklearn_example.ipynb)
+
 
