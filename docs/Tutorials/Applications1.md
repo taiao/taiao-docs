@@ -1,17 +1,17 @@
 # Satellite derived bathymetry for intertidal zones
-Wagner Luiz Langer Costa
+Mr Wagner Luiz Langer Costa
 
 #### Problem background 
 Prediction of coastal flooding events within New Zealand. Important to have some capability to describe the event, and its impact on the environment. An area of particular concern is the estimation of bathymetry data for estuaries.
 
-#### How to determine bathymetry?
+#### How to determine bathymetry
 A number of parameters are taken into consideration when arriving at a calculation related to sea level including: mean sea level, astronomical tide, storm surge, wave run-up, fluvial discharge and vertical land motion.
 There are three main ways in which bathymetry can be calculated. These include, RTK - Real-time kinematics, Echo sounders and LiDAR, Remote Sensing. Of the three, Remote Sensing is the most economical, however it suffers from the lowest accuracy of the three approaches.
 
 #### The Copernicus sentinel
 The Copernicus programme uses satellites for earth observation missions with an intended outcome being the delivery, free of charge, of data captured using these instruments.
 
-#### Chapter 3: how well can we predict flooding events in areas where we don't have good bathymetric data? 
+#### How well can we predict flooding events in areas where we don't have good bathymetric data? 
 Objectives - Generate satellite derived bathymetry measurements for all estuaries within New Zealand, especially those having little, or non-existent bathymetric data.
 
 #### Study area
