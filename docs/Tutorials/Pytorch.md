@@ -42,7 +42,7 @@ Professor Albert Bifet
 
 * PyTorch example
     * MNIST Dataset (National Institute of Standards and Technology)
-    * Classicial dataset used within Deep Learning
+    * Classical dataset used within Deep Learning
     * PyTorch data Loading
     * PyTorch model
     * Training & Evaluation
@@ -52,7 +52,7 @@ Professor Albert Bifet
 * TensorFlow
   * Feature contrast with PyTorch
   * Static topology
-  * Model building similiar to PyTorch
+  * Model building similar to PyTorch
 
 
 <video class="video" width="640" height="360" controls>

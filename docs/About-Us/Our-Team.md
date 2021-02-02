@@ -26,7 +26,7 @@
 [Stephen Witherden](https://www.linkedin.com/in/stephenwitherden?originalSubdomain=au), Beca Group Limited  
 
 [Dr. Deniz Ozkundakci](https://www.linkedin.com/in/deniz-%C3%B6zkundakci-953774191?originalSubdomain=nz), Scientist, Waikato Regional Council  
-[Dr. Moritz Lehmann](https://www.xerra.nz/our-team/),Senior Scientist, Xerra  
+[Dr. Moritz Lehmann](https://www.xerra.nz/our-team/), Senior Scientist, Xerra  
 [Mr. Christopher McBride](https://www.waikato.ac.nz/staff-profiles/people/cmcbride), Senior Research Officer, [Environmental Research Institute](https://www.waikato.ac.nz/eri/), University of Waikato
 
 ### PhD Students

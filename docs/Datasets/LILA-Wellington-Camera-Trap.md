@@ -4,7 +4,7 @@
 
 The following was extracted from [LILA BC:](http://lila.science/datasets/wellingtoncameratraps)
 
-This data set contains 270,450 images from 187 camera locations in Wellington, New Zealand. The cameras (Bushnell 119537, 119476, and 119436) recorded sequences of three images when triggered. Each sequence was labelled by citizen scientists and/or professional ecologists from Victoria University of Wellington into 17 classes: 15 animal categories (for example, the most common labels are bird, cat, and hedgehog), empty, and unclassifiable. Approximately 17% of images are labeled as empty. Images within each sequence share the same species label (even though the animal may not have been recorded in all three images).
+This data set contains 270,450 images from 187 camera locations in Wellington, New Zealand. The cameras (Bushnell 119537, 119476, and 119436) recorded sequences of three images when triggered. Each sequence was labelled by citizen scientists and/or professional ecologists from Victoria University of Wellington into 17 classes: 15 animal categories (for example, the most common labels are bird, cat, and hedgehog), empty, and unclassifiable. Approximately 17% of images are labelled as empty. Images within each sequence share the same species label (even though the animal may not have been recorded in all three images).
 
 ### Citation, license, and contact information
 
@@ -24,7 +24,7 @@ Annotations are provided in .csv format as well as in [COCO Camera Traps](https:
 
 ### Downloading the data
 
-A link to a zipfile is provided below, but – whether you want the whole data set, a specific folder, or a subset of the data (e.g. images for one species) – we recommend checking out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).
+A link to a zip file is provided below, but – whether you want the whole data set, a specific folder, or a subset of the data (e.g. images for one species) – we recommend checking out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).
 
 #### Download links
 

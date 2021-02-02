@@ -28,7 +28,7 @@ researchers.
     * Data pre-processing.
 <br>
 * Sample problem - NOAA weather data ('NEWWeather' dataset)
-    * Descision Trees.
+    * Decision Trees.
     * Pipelines (chaining sequences of operations).
     * Visualising operations.
     * Concept drift.
