@@ -11,36 +11,36 @@ Professor Albert Bifet
     * Numeric representation optimised for GPUs
     * Deep Learning framework
 
-* Motivation
+* #### Motivation
     * Deep Learning using Python accelerates the path from research prototyping to production deployment
     * Uses a dynamic computation graph approach
     * Uses hardware accelerators as GPUs
 
-* Deep Learning
+* #### Deep Learning
     * Inspired by Biological neural networks, but not the same
     * Construct improved features representing the input problem
     * Combine features to improve network predictive capability
 
-* Neural Network
+* #### Neural Network
     * Example network
 
-* PyTorch audience
+* #### PyTorch audience
     * Replacement for NumPy - using the power of GPUs
     * Deep Learning research platform providing
         * Speed
         * Flexibility
 
-* TensorFlow
+* #### TensorFlow
     * [Playground - https://playground.tensorflow.org](https://playground.tensorflow.org)
 
-* Stochastic Gradient Descent
+* #### Stochastic Gradient Descent
     * Strategy for updating weights ('learning')
     * Computed automatically within PyTorch
 
-* Skorch
+* #### Skorch
     * Scikit-Learn wrapper for PyTorch
 
-* PyTorch example
+* #### PyTorch example
     * MNIST Dataset (National Institute of Standards and Technology)
     * Classical dataset used within Deep Learning
     * PyTorch data Loading
@@ -49,10 +49,10 @@ Professor Albert Bifet
     * Evaluating Training Loss
     * Evaluating Testing Loss
 
-* TensorFlow
-  * Feature contrast with PyTorch
-  * Static topology
-  * Model building similar to PyTorch
+* #### TensorFlow
+    * Feature contrast with PyTorch
+    * Static topology
+    * Model building similar to PyTorch
 
 
 <video class="video" width="640" height="360" controls>
