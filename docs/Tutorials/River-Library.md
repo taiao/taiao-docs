@@ -1,5 +1,5 @@
 # River - a library for data stream mining
-<img width="20%" height="20%" src="/taiao-docs/img/river_logo.svg">  
+<img width="20%" height="20%" src="/img/river_logo.svg">  
 Dr Jacob Montiel
 
 * Incremental learning - All the tools in river can be updated with a single sample at a time.  
@@ -31,5 +31,5 @@ researchers.
     * GitHub repository: [https://github.com/online-ml/river/](https://github.com/online-ml/river/)
 
 <video class="video" width="640" height="360" controls>
-    <source src="/taiao-docs/video/River_ Dr. Jacob Montiel.mp4" type="video/mp4">
+    <source src="/video/River_ Dr. Jacob Montiel.mp4" type="video/mp4">
 </video>

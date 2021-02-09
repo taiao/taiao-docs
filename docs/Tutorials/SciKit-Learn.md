@@ -1,5 +1,5 @@
 # SciKit Learn - machine learning in Python
-<img width="20%" height="20%" src="/taiao-docs/img/scikit-learn-logo.bmp">
+<img width="20%" height="20%" src="/img/scikit-learn-logo.bmp">
 <br>
 Dr Heitor Murilo Gomes
 
@@ -33,5 +33,5 @@ Dr Heitor Murilo Gomes
     * [Jupyter Notebook](sklearn_example.ipynb)
 
 <video class="video" width="640" height="360" controls>
-    <source src="/taiao-docs/video/Scikit-learn_ Dr. Heitor Gomes.mp4" type="video/mp4">
+    <source src="/video/Scikit-learn_ Dr. Heitor Gomes.mp4" type="video/mp4">
 </video>

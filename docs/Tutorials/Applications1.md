@@ -30,13 +30,13 @@ Google Colab provides an environment for hosting and executing of Jupyter notebo
 
 #### Part 1 
 <video class="video" width="640" height="360" controls>
-    <source src="/taiao-docs/video/Applications 1_ Wagner Langer.mp4" type="video/mp4">
+    <source src="/video/Applications 1_ Wagner Langer.mp4" type="video/mp4">
 </video>
 
 
 #### Part 2
 <video class="video" width="640" height="360" controls>
-    <source src="/taiao-docs/video/Applications 2_ Wagner Langer.mp4" type="video/mp4">
+    <source src="/video/Applications 2_ Wagner Langer.mp4" type="video/mp4">
 </video>
 
 
