@@ -1,4 +1,4 @@
-### [Run in Google Colab](https://colab.research.google.com/github/jacobmontiel/taiao-docs/blob/main/docs/Notebooks/Moana-thredds-server-connector.ipynb)
+### [Run in Google Colab](https://colab.research.google.com/github/taiao/taiao-docs/blob/main/docs/Notebooks/Moana-thredds-server-connector.ipynb)
 
 ??? info
     #### GitHub repository
