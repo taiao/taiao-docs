@@ -1,7 +1,7 @@
 # Introduction to PyTorch
 
 <!-- TODO: Update static url -->
-<img width="80%" height="80%" src="/taiao-docs/img/pytorch-logo-dark.png">
+<img width="80%" height="80%" src="/img/pytorch-logo-dark.png">
 
 Professor Albert Bifet
 
@@ -56,5 +56,5 @@ Professor Albert Bifet
 
 
 <video class="video" width="640" height="360" controls>
-    <source src="/taiao-docs/video/PyTorch_Prof. Albert Bifet.mp4" type="video/mp4">
+    <source src="/video/PyTorch_Prof. Albert Bifet.mp4" type="video/mp4">
 </video>
