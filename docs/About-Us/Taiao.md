@@ -10,7 +10,7 @@ Our vision is to enable the next level of data science to provide robust and fit
 # Our Logo
 
 <!-- src url is altered for a deployed site -->
-<img align="right" width="50%" height="50%" src="/taiao-docs/img/6825_TAIAO_logo_1000x320.jpg">
+<img align="right" width="50%" height="50%" src="/img/6825_TAIAO_logo_1000x320.jpg">
 
 The TAIAO logo represents realms of water, land and sky. The rau (leaf) is used to represent aspects of growth and to indicate changes over time. The purapura whetū tukutuku pattern is used to represent the myriad of stars that are forever guiding and shaping our environments and the myriad of data points that TAIAO would like to observe and develop guidance from.
 <br>
