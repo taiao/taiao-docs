@@ -43,6 +43,8 @@ Professor Albert Bifet will cover the following topics:
     * [Pytorch Notebook](Pytorch.ipynb)
 
 
+# Tutorial video
+
 <video class="video" width="640" height="360" controls>
     <source src="/video/Notebooks_Python_Prof_Albert Bifet.mp4" type="video/mp4">
 </video>
