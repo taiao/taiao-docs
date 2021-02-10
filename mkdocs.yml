@@ -1,16 +1,16 @@
 # Project information
 site_name: TAIAO
 site_description: Artificial Intelligence for Advanced Open Environmental Science
-site_author: The taiao developers
-site_url: https://jacobmontiel.github.io/taiao-docs/
+site_author: The TAIAO developers
+site_url: http://taiao.ai
 
 # Repository
 repo_name: taiao-docs
-repo_url: https://github.com/jacobmontiel/taiao-docs
+repo_url: https://github.com/taiao/taiao-docs
 edit_uri: ''
 
 # Copyright
-copyright: Copyright &copy; 2019 - 2020
+copyright: Copyright &copy; 2019 - 2021
 
 # Configuration
 theme:
@@ -33,7 +33,7 @@ theme:
 extra:
     social:
       - icon: fontawesome/brands/github-alt
-        link: https://github.com/abifet/taiao-docs
+        link: https://github.com/taiao/taiao-docs
 
 # Google Analytics
 # google_analytics:
