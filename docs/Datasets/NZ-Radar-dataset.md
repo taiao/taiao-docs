@@ -1,4 +1,6 @@
-# NZ Rain Radar raw archive
+# NZ Rain Radar raw archive Metservice automatic weather stations
+![image](/img/Rain_radar_notebook_image.jpg)
+<br>
 
 Description: This dataset is an archive of data from the MetService doppler radar network.
 

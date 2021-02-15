@@ -1,5 +1,9 @@
 # Himawari 8 weather satellite
 
+![image](/img/himawari89_outward.png)
+<br>
+[^1] Image source
+
 Description: The Himawari-8 weather satellite is owned and operated by the Japan Meteorological Agency (JMA) and provides data covering: East Asia, and includes the West and central Pacific regions.
 
 Owner: Japan Meteorological Agency
@@ -14,3 +18,4 @@ Archive of himawari-8 satellite [data](ftp://ftp.ptree.jaxa.jp/jma/netcdf)
 Archive of full resolution channel 3 data from Himawari-8 satellite  
 Full resolution [archive](https://registry.opendata.aws/noaa-himawari/) of Himawari-8 satellite (data from end of 2019 only)
 
+[^1]: url: https://www.data.jma.go.jp/mscweb/en/general/img/himawari89_outward.png
