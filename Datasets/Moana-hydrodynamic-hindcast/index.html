@@ -69,6 +69,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#moana-hydrodynamic-hindcast" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -421,7 +426,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../Blitzen-lightning-feed/" class="md-nav__link">
+    <a href="../../Blitzen-lightning-feed.md" class="md-nav__link">
       Blitzen lightning feed
     </a>
   </li>
@@ -541,7 +546,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../Metocean-wave-buoy/" class="md-nav__link">
+    <a href="../../Metocean-wave-buoy.md" class="md-nav__link">
       MetOcean wave buoys (Campbell Island & Southern Ocean)
     </a>
   </li>
@@ -569,6 +574,8 @@
   <li class="md-nav__item md-nav__item--active">
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
     
     
     <a href="./" class="md-nav__link md-nav__link--active">
@@ -608,7 +615,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../TAO-lightening-feed/" class="md-nav__link">
+    <a href="../../TAO-lightening-feed.md" class="md-nav__link">
       TAO lightening feed
     </a>
   </li>
@@ -920,73 +927,34 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>Moana 25 year hydrodynamic hindcast of New Zealand waters</h1>
-                
-                <p><strong>Data description</strong><br>
-The Moana backbone hindcast datasets comes in the form of 4 sources of data stored in 4 subfolders on the thredds server (http://thredds.moanaproject.org:8080/thredds/catalog/moana/ocean/NZB/v1.9/catalog.xml):</p>
-<ul>
-<li><strong>raw_3D</strong>: This folder contains the raw ROMS outputs (3D and 2D fields). All the fields are laid on their original curvilinear grids. Main variables are:</li>
-<li>Free-surface height (zeta) in metres</li>
-<li>Eastward vertically integrated momentum component (ubar_eastward) in metres per second</li>
-<li>Northward vertically integrated momentum component (vbar_eastward) in metres per second</li>
-<li>Eastward momentum component (u_eastward) in metres per second</li>
-<li>Northward momentum component (v_eastward) in metres per second</li>
-<li>Potential temperature (temp) in degrees Celcius</li>
-<li>
-<p>Salinity (salt)
-_caturl = 'http://thredds.moanaproject.org:8080/thredds/catalog/moana/ocean/NZB/v1.9/raw_3D/catalog.xml'
-_base_dodsurl = 'http://thredds.moanaproject.org:8080/thredds/dodsC/moana/ocean/NZB/v1.9/raw_3D/'</p>
-</li>
-<li>
-<p><strong>monthly_avg</strong>: This folder contains monthly averages of the raw ROMS outputs (3D and 2D fields). Main variables are:</p>
-</li>
-<li>
-<p>Time-averaged free-surface height (zeta) in metres</p>
-</li>
-<li>Time-averaged eastward vertically integrated momentum component (ubar_eastward) in metres per second</li>
-<li>Time-averaged northward vertically integrated momentum component (vbar_eastward) in metres per second</li>
-<li>Time-averaged eastward momentum component (u_eastward) in metres per second</li>
-<li>Time-averaged northward momentum component (v_eastward) in metres per second</li>
-<li>
-<p>Time-averaged potential temperature (temp) in degrees Celcius
-Time-averaged salinity (salt)
-_caturl = 'http://thredds.moanaproject.org:8080/thredds/catalog/moana/ocean/NZB/v1.9/monthly_avg/catalog.xml'
-_base_dodsurl = 'http://thredds.moanaproject.org:8080/thredds/dodsC/moana/ocean/NZB/v1.9/monthly_avg/'</p>
-</li>
-<li>
-<p><strong>processed_sfc</strong>: This folder contains 2D variables only (surface, depth-averaged, bathymetry) interpolated to a rectilinear longitude/latitude grid. Main variables are:</p>
-</li>
-<li>
-<p>Sea surface height above geoid (ssh) in metres</p>
-</li>
-<li>Sea surface temperature (sst) in degrees Celcius</li>
-<li>Surface Eastward sea water velocity (us) in metres per second</li>
-<li>Surface Northward sea water velocity (vs) in metres per second</li>
-<li>Depth-averaged Eastward sea water velocity (um) in metres per second</li>
-<li>
-<p>Depth-averaged Northward sea water velocity (vm) in metres per second
-Sea floor depth below mean sea level (dep) in metres
-_caturl = http://thredds.moanaproject.org:8080/thredds/catalog/moana/ocean/NZB/v1.9/processed_sfc/catalog.xml'
-_base_dodsurl = 'http://thredds.moanaproject.org:8080/thredds/dodsC/moana/ocean/NZB/v1.9/processed_sfc/'</p>
-</li>
-<li>
-<p><strong>processed_3D</strong>: This folder contains the 3D fields interpolated on a rectilinear longitude/latitude/level 3D grids. Main variables are:</p>
-</li>
-<li>
-<p>Sea water temperature (temp) in degrees Celcius</p>
-</li>
-<li>Sea water absolute salinity (salt) in 1e-3</li>
-<li>Eastward sea water velocity (u) in metres per second</li>
-<li>Northward sea water velocity (v) in meters per second
-_caturl = 'http://thredds.moanaproject.org:8080/thredds/catalog/moana/ocean/NZB/v1.9/processed_3D/catalog.xml'
-_base_dodsurl = 'http://thredds.moanaproject.org:8080/thredds/dodsC/moana/ocean/NZB/v1.9/processed_3D/'</li>
-</ul>
+                <h1 id="moana-hydrodynamic-hindcast">Moana hydrodynamic hindcast<a class="headerlink" href="#moana-hydrodynamic-hindcast" title="Permanent link">&para;</a></h1>
+<p>Description: 25 hydrodynamic hindcast of New Zealands water generated as part of the NZ MBIE funded Moana project.</p>
+<p>Owner: Meteorological Service of New Zealand Ltd</p>
+<p>License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (see https://www.moanaproject.org/data for more).</p>
+<p>Tags: Model, Numerical, Hindcast, New Zealand, Gridded, Sea temperature, Salinity, Current, Sea Surface Height</p>
+<p>Access: The Moana hydrodynamic hindcast dataset comes in the form of four sources of data stored in four subfolders on a [thredds server] (http://thredds.moanaproject.org:8080/thredds/catalog/moana/ocean/NZB/v1.9/catalog.xml).</p>
+<p>More detail on data and data access can be found on a dedicated <a href="https://github.com/metocean/TAIAO/blob/master/data_connectors/moana_connectors/Moana%20thredds%20server%20connector.ipynb">notebook</a>.</p>
                 
               
               
