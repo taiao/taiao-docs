@@ -12,4 +12,4 @@ Archive of himawari-8 satellite [data](ftp://ftp.ptree.jaxa.jp/jma/netcdf)
 Archive of full resolution channel 3 data from Himawari-8 satellite  
 Full resolution [archive](https://registry.opendata.aws/noaa-himawari/) of Himawari-8 satellite (data from end of 2019 only)
 
-[^1]: url: https://www.data.jma.go.jp/mscweb/en/general/img/himawari89_outward.png
+[^1]: https://www.data.jma.go.jp/mscweb/en/general/img/himawari89_outward.png
