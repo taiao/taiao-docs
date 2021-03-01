@@ -1,7 +1,8 @@
-# GPATS Oceania lightning feed
+# Australia Global Positioning and Tracking System (GPATS) lightning feed
 
-### Archive of lightning records and live feed for Oceania area
+Description: Archive of lightning records and live feed for Oceania area. Spanning February 2004 to the present day
 
+<<<<<<< HEAD
 ??? info 
     #### Data Service Owner
     MetOcean
@@ -31,7 +32,12 @@
     N/A
 	
 Captured data, spanning February 2004 to the present day, includes:
+=======
+Owner: This data is owned by TOA Systems (http://www.gpats.com.au/).
+>>>>>>> main
 
-Observation, lightning, location, time, intensity, and type.
+License: This is private data. MetraWeather Australia is the exclusive reseller of TOA Systems' GPATS lightning data in Australia, please contact them to discuss options for using that data for commercial or research applications (http://www.gpats.com.au/contact-us).
 
-This data can be accessed through the [MetOcean lightning API](https://metocean.github.io/lightning/)
+Tags: Observation, lightning, location, time, intensity, and type.
+
+Access: This data could be accessed through the [MetOcean lightning API](https://metocean.github.io/lightning/) with the appropriate credential.
