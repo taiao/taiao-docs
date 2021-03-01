@@ -4,6 +4,35 @@
 <br>
 [^1] Image source
 
+??? info 
+    #### Data Service Owner
+    MetOcean
+
+    #### Data Owner
+    N/A
+
+    #### Contact Person Name
+    Sebastien Delaux
+
+    #### Contact Person Email
+    s.delaux@metocean.co.nz
+
+    #### License
+    Open (near to find exact license)
+
+    #### Data Format
+    JSON
+
+    #### Data Standard
+    N/A
+
+    #### Volumetrics
+    POINT (169.04916 -52.76000) 3 hourly data
+    POINT (-136.27638 -48.71), 3 hourly data
+
+    #### Benchmark
+    N/A
+	
 
 [MetOcean Solutions](https://www.metocean.co.nz/) currently has six instruments collecting wave data in the Southern Ocean, including one moored and five drifting buoys. [Here](https://www.metocean.co.nz/southern-ocean) we provide graphs showing the real-time data. Note all these data are freely available to the scientific community.
 

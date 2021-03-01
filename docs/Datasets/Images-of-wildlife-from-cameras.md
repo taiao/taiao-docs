@@ -1,5 +1,34 @@
 # Images of wildlife from cameras
 
+??? info 
+    #### Data Service Owner
+    Kaggle
+
+    #### Data Owner
+    N/A
+
+    #### Contact Person Name
+    Varvara Vetrova
+
+    #### Contact Person Email
+    varvara.vetrova@gmail.com
+
+    #### License
+    N/A
+
+    #### Data Format
+    JPG
+
+    #### Data Standard
+    N/A
+
+    #### Volumetrics
+    images, 441 locations around the globe
+
+    #### Benchmark
+    N/A
+	
+
 The WCS training set contains 217,959 images from 441 locations, and the WCS test set contains 62,894 images from 111 locations. These 552 locations are spread across the globe.
 
 You may also choose to use supplemental training data from the [iNaturalist 2017](https://github.com/visipedia/inat_comp/blob/master/2017/README.md), [iNaturalist 2018](https://github.com/visipedia/inat_comp/blob/master/2018/README.md) and [iNaturalist 2019](https://github.com/visipedia/inat_comp) competition datasets. As a courtesy, we have curated all the images from these datasets containing classes that might be in the test set and mapped them into the iWildCam categories. Note: these curated images come only from the iNaturalist 2017 and iNaturalist 2018 datasets because there are no common classes between the iNaturalist 2019 dataset and the WCS dataset. However, participants are still free to use the iNaturalist 2019 data.

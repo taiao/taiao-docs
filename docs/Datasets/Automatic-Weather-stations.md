@@ -4,6 +4,40 @@
 <br>
 [^1] Image source
 
+??? info 
+    #### Data Service Owner
+    MetService
+
+    #### Data Owner
+    
+
+    #### Contact Person Name
+    Sebastien Delaux
+
+    #### Contact Person Email
+    s.delaux@metocean.co.nz
+
+    #### License
+    N/A (Open?)
+
+    #### Data Format
+    JSON
+
+    #### Data Standard
+    N/A
+
+    #### Volumetrics
+    Haast - POINT(169.0065 -43.86), hourly data <br/>
+    Ardmore - POINT(174.971 -37.03), hourly data <br/>
+    Ashburton - POINT(171.804 -43.903), hourly data <br/>
+    Auckland - POINT(174.807 -37.009), hourly data <br/>
+    Birchwood - POINT(167.901 -45.944), hourly data <br/>
+    Flat Hills - POINT(175.658 -39.893), hourly data
+
+    #### Benchmark
+    N/A
+	
+
 Data collected from an array of fixed weather stations located across the country. For a
 general overview of the Weather Stations refer to the [MetService blog](https://blog.metservice.com/location-of-weather-stations)
 

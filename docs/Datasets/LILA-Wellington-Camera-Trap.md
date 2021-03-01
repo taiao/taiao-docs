@@ -1,5 +1,33 @@
 # LILA Wellington Camera Trap
 
+??? info 
+    #### Data Service Owner
+    LILA
+
+    #### Data Owner
+    N/A
+
+    #### Contact Person Name
+    Nick Lim
+
+    #### Contact Person Email
+    nick.lim@waikato.ac.nz
+
+    #### License
+    N/A (CC-BY?)
+
+    #### Data Format
+    JPEG
+
+    #### Data Standard
+    N/A
+
+    #### Volumetrics
+    47k images of critters caught by camera traps in Wellington 
+
+    #### Benchmark
+    N/A
+	
 ### Overview
 
 The following was extracted from [LILA BC:](http://lila.science/datasets/wellingtoncameratraps)
