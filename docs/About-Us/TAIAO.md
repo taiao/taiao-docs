@@ -24,7 +24,7 @@ Data are essential to research, understand, set policy for and manage New Zealan
 ## Research Aims
 We will advance the state-of-the-art of data science by addressing the following three research challenges:
 
-**1. Machine Learning for Data Streams and Time Series.** Learning from data streams requires different techniques from those used on static data. Often, one- pass techniques are required with data streams, and the data are typically not curated. Applications are driven by anomaly and novelty detection, as well as clustering and event detection, with both supervised and reinforcement learning, the latter being naturally cast in a streaming setting.
+**1. Machine Learning for Data Streams and Time Series.** Learning from data streams requires different techniques from those used on static data. Often, one-pass techniques are required with data streams, and the data are typically not curated. Applications are driven by anomaly and novelty detection, as well as clustering and event detection, with both supervised and reinforcement learning, the latter being naturally cast in a streaming setting.
 
 **2. Machine Learning for Weak signals and Extreme Events.** Detecting extreme events in real time is much more challenging than detecting normal behaviour in historical data because extreme events, by definition, occur very rarely. Weak signals are the first indicators of changes that may become significant in the future but climate change means extremes will become more common in the future and we will need to incorporate robust predictions of extremes into our adaptation plans.
 
