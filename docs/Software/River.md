@@ -1,6 +1,6 @@
 <img width="50%" height="50%" src="/img/river_logo.svg"> 
 
-# River
+<img width="75%" height="75%" src="/img/illustration.png"> 
 
 A Python package for online/streaming machine learning.
 

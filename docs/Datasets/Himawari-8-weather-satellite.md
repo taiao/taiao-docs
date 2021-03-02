@@ -4,7 +4,46 @@
 <br>
 [^1] Image source
 
+<<<<<<< HEAD
+??? info 
+    #### Data Service Owner
+    JMA (MetService is data custodian for NZ)
+    AWS
+
+    #### Data Owner
+    JMA (MetService is data custodian for NZ)
+    Japanese Meteorological Agency
+
+    #### Contact Person Name
+    Sebastien Delaux/Greg Pearson
+
+    #### Contact Person Email
+    s.delaux@metocean.co.nz
+
+    #### License
+    N/A
+
+    #### Data Format
+    NetCDF
+    Himawari Standard Data format
+
+    #### Data Standard
+    CF
+
+    #### Volumetrics
+    Frequency 10 minutes; Resolution ~2km; Geographic extend: half disc; data from july 2015 to now
+    Frequency 10 minutes; Resolution ~500m; Geographical extent: half disc; data from september 2017
+    Frequency 10 minutes; Resolution 500-2000m depending on channel; Geographical extent half disc;  data from december 2019
+
+    #### Benchmark
+    N/A
+    
+	
+
+The Himawari-8 weather satellite is owned and operated by the Japan Meteorological Agency (JMA) and provides data covering: East Asia, and includes the West and central Pacific regions.
+=======
 Description: The Himawari-8 weather satellite is owned and operated by the Japan Meteorological Agency (JMA) and provides data covering: East Asia, and includes the West and central Pacific regions.
+>>>>>>> main
 
 Owner: Japan Meteorological Agency
 
