@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#run-in-google-colab" class="md-skip">
+        <a href="#wave-projection-data-new-zealand" class="md-skip">
           Skip to content
         </a>
       
@@ -719,8 +719,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#run-in-google-colab" class="md-nav__link">
-    Run in Google Colab
+  <a href="#wave-projection-data-new-zealand" class="md-nav__link">
+    Wave Projection Data - New Zealand
   </a>
   
 </li>
@@ -735,6 +735,13 @@
         <li class="md-nav__item">
   <a href="#query-server" class="md-nav__link">
     Query Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extract-data" class="md-nav__link">
+    Extract data
   </a>
   
 </li>
@@ -964,8 +971,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#run-in-google-colab" class="md-nav__link">
-    Run in Google Colab
+  <a href="#wave-projection-data-new-zealand" class="md-nav__link">
+    Wave Projection Data - New Zealand
   </a>
   
 </li>
@@ -980,6 +987,13 @@
         <li class="md-nav__item">
   <a href="#query-server" class="md-nav__link">
     Query Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extract-data" class="md-nav__link">
+    Extract data
   </a>
   
 </li>
@@ -1006,34 +1020,115 @@
                 
                   <h1>Coasts and Ocean Collective database</h1>
                 
-                <h3 id="run-in-google-colab"><a href="https://colab.research.google.com/github/taiao/taiao-docs/blob/main/docs/Notebooks/Coasts_Oceans.ipynb">Run in Google Colab</a><a class="headerlink" href="#run-in-google-colab" title="Permanent link">&para;</a></h3>
+                <h2 id="wave-projection-data-new-zealand">Wave Projection Data - New Zealand<a class="headerlink" href="#wave-projection-data-new-zealand" title="Permanent link">&para;</a></h2>
+<p>Here we provide four time-slices of high resolution (9 km) wave climate data for the New Zealand waters. We developed a set of historical and projected (1993–2006, 2026–2046, 2080–2100) wave climatologies from 3 global climate models (ACCESS1-0, CNRM-CM5 and MIROC5) and two representative concentration pathways (RCP 4.5, RCP 8.5).</p>
+<p>This data, and associated datsets are described in detail at the <a href="https://coastalhub.science/data">Coasts &amp; Ocean Collective</a></p>
 <h2 id="python-libraries">Python libraries<a class="headerlink" href="#python-libraries" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="c1"># We install requests which is a python library for executing HTTP requests. We also install json which will be used to process the retrieved records.</span>
+<p>In order to establish a connection with the remote server and process the data retrieved, Python libraries will need to be installed.</p>
+<p>For this example Notebook, the networking library - 'requests' will be used.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># We install requests which is a python library for executing HTTP requests.</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="err">!</span><span class="p">{</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">}</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">requests</span> <span class="n">json</span>
+<span class="err">!</span><span class="p">{</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">}</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">requests</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>Requirement already satisfied: requests in c:\users\user\appdata\local\programs\python\python37\lib\site-packages (2.25.1)
+Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\user\appdata\local\programs\python\python37\lib\site-packages (from requests) (2020.12.5)
+Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in c:\users\user\appdata\local\programs\python\python37\lib\site-packages (from requests) (4.0.0)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in c:\users\user\appdata\local\programs\python\python37\lib\site-packages (from requests) (1.26.3)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in c:\users\user\appdata\local\programs\python\python37\lib\site-packages (from requests) (2.10)
+
+
+WARNING: You are using pip version 19.2.3, however version 21.0.1 is available.
+You should consider upgrading via the &#39;python -m pip install --upgrade pip&#39; command.
 </code></pre></div>
 
 <h2 id="query-server">Query Server<a class="headerlink" href="#query-server" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Configure the remote server URL</span>
+<p>Before a Python library can be utilised, it must be imported first. We are making specific reference to functionality contained within the 'requests' and 'json' libraries, so they must be imported before use.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+</code></pre></div>
+
+<p>Querying a Server is a multi-step process with the first, and most critical being the identification of the Server. We create a variable to hold the fully qualified name of the Server, including communications protocol - "https", domain name - "wave.storm-surge.cloud.edu.au" and identification of service you wish to access - "wave_mysql"</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Specify the remote server URL</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://wave.storm-surge.cloud.edu.au/wave_mysql/&quot;</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="c1"># Query Server &amp; extract data</span>
+<p>Quering the Server invloves sending a command, 'GET' in our example, together with the identification of the Server as described in the previous step. 'GET' signals that we wish to retrieve (return) records from the Server. The records returned from the Server must be stored in memory so we create a variable "wave_data" to hold this information.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Query Server</span>
 <span class="n">wave_data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="extract-data">Extract data<a class="headerlink" href="#extract-data" title="Permanent link">&para;</a></h2>
+<p>Once the data is stored in a variable, it must be converted into a format suitable for subsequent manipulation. The data will be extracted and stored in the JSON format. As before, we create a variable to hold the converted data.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Extract data in JSON (&#39;Javascript Object Notation&#39;) format</span>
 <span class="n">data_points</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">wave_data</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div>
 
+<p>Checking the number of rows of data retrieved is a quick way to verify that the process worked as we expected. Using the 'print' command, and the 'len()' - length function, count the number of rows retrieved and print the result.</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Check number of rows retrieved</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of rows retrieved: &quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_points</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">])))</span>
 </code></pre></div>
 
+<div class="codehilite"><pre><span></span><code>Number of rows retrieved:  14834
+</code></pre></div>
+
 <h2 id="process-raw-data">Process raw data<a class="headerlink" href="#process-raw-data" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Iterate over first 5 rows in resultset</span>
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data_points</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]:</span>
-    <span class="c1"># Entire record</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-    <span class="c1"># Access Individual elements</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;island&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;m.y&#39;</span><span class="p">])</span>
+<p>Now that we have the data from the Server, and have it in a format (JSON) which is easier to manipulate, displaying the first record is a good way to satisfy ourselves that the data appears to be correct. The following command uses the 'json.dumps', and 'print' functions to display this record. Please note - '0' is the first element within a 'list'.</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data_points</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>{
+    &quot;x&quot;: 4,
+    &quot;y&quot;: 6,
+    &quot;lat&quot;: -42.618687,
+    &quot;lng&quot;: 170.94698,
+    &quot;island&quot;: &quot;NI&quot;,
+    &quot;m.x&quot;: 4,
+    &quot;m.y&quot;: 6,
+    &quot;t&quot;: 0,
+    &quot;Hsig&quot;: 1.5660860538482666,
+    &quot;datetime&quot;: &quot;1993-01-01 00:00:00&quot;
+}
+</code></pre></div>
+
+<p>In a preceeding step you verified the number of rows retrieved, then displayed a single record. If you want to display more rows, we can access each row individually, and print the contents of that row. This task is achieved using a structure which can visit all rows, or a subset of the rows retrieved. In the following example we will print the contents of the first three rows retrieved from the Server.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Iterate over first two rows</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data_points</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>{
+    &quot;x&quot;: 4,
+    &quot;y&quot;: 6,
+    &quot;lat&quot;: -42.618687,
+    &quot;lng&quot;: 170.94698,
+    &quot;island&quot;: &quot;NI&quot;,
+    &quot;m.x&quot;: 4,
+    &quot;m.y&quot;: 6,
+    &quot;t&quot;: 0,
+    &quot;Hsig&quot;: 1.5660860538482666,
+    &quot;datetime&quot;: &quot;1993-01-01 00:00:00&quot;
+}
+{
+    &quot;x&quot;: 4,
+    &quot;y&quot;: 34,
+    &quot;lat&quot;: -42.618687,
+    &quot;lng&quot;: 173.56314,
+    &quot;island&quot;: &quot;NI&quot;,
+    &quot;m.x&quot;: 4,
+    &quot;m.y&quot;: 34,
+    &quot;t&quot;: 0,
+    &quot;Hsig&quot;: 1.782180666923523,
+    &quot;datetime&quot;: &quot;1993-01-01 00:00:00&quot;
+}
+</code></pre></div>
+
+<p>Once you have identified a 'row' of interest, individual elements within the row can be extracted. This task is achieved through referencing the row, and desired 'named element' within the row.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Access Individual elements</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;island&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;m.y&#39;</span><span class="p">])</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>NI 1993-01-01 00:00:00 34
 </code></pre></div>
                 
               
