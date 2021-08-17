@@ -6,7 +6,7 @@
     #### GitHub repository
     N/A
     #### Datasets
-    Please see the Datasets pages, [here](../Datasets/Automatic-Weather-stations.md) and [here](../Datasets/Metocean-wave-buoy.md) for     further details.
+    Please see the Datasets pages, [here](../Datasets/Automatic-Weather-stations.md) for further details.
     #### Author
     Sebastien Delaux/Greg Pearson
     #### License
