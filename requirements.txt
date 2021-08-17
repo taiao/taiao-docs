@@ -1,0 +1,8 @@
+ipykernel
+jupyter-client
+mike==0.5.3
+mkdocs
+mkdocs-awesome-pages-plugin
+mkdocs-material
+nbconvert
+numpydoc
