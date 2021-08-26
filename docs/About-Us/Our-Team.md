@@ -33,4 +33,4 @@ Ding Ning, School of Mathematics and Statistics, [The University of Canterbury](
 Olivier Graffeuille, School of Computer Science, [The University of Auckland](https://www.auckland.ac.nz/en.html)  
 Matthew Skiffington, [Te Ipu o te Mahara AI Institute](https://ai.waikato.ac.nz), University of Waikato  
 Tobias Milz, School of Mathematics and Statistics, [The University of Canterbury](https://www.canterbury.ac.nz/)  
-Yibin Sun, School, [Te Ipu o te Mahara AI Institute](https://ai.waikato.ac.nz), University of Waikato
+Yibin Sun, [Te Ipu o te Mahara AI Institute](https://ai.waikato.ac.nz), University of Waikato
